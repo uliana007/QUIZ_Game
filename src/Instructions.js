@@ -5,7 +5,7 @@ const instructionSteps = [
   {
     text: "Корзина",
     description: "Здесь отображается количество заработанных очков", // Описание
-    highlight: { top: "15%", left: "72%", width: "100px", height: "110px" },
+    highlight: { top: "15%", left: "65%", width: "100px", height: "110px" },
     boxImage: require("./assets/png/screen-footbal-goal.png"),
     boxPosition: { top: "65%", left: "60%" }, // Позиция
     boxSize: { width: "150px", height: "250px" }, // Размеры
@@ -13,7 +13,7 @@ const instructionSteps = [
     {
       text: "Поле для выбора ответов",
       description: "Здесь отображаются варианты ответов", // Описание
-      highlight: { top: "57%", left: "21%", width: "300px", height: "240px" },
+      highlight: { top: "57%", left: "15%", width: "300px", height: "240px" },
       boxImage: require("./assets/png/screen-quistions.png"),
       boxPosition: { top: "35%", left: "50%" }, // Позиция
       boxSize: { width: "200px", height: "200px" }, // Размеры
