@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/QUIZ_Game/static/css/main.d12b737c.css",
+    "main.js": "/QUIZ_Game/static/js/main.cd663a58.js",
+    "static/media/fon-balls.png": "/QUIZ_Game/static/media/fon-balls.408b494f8893a3644ca0.png",
+    "static/media/index-screen.png": "/QUIZ_Game/static/media/index-screen.c53513ace8c7b69e3d43.png",
+    "static/media/icon-money.png": "/QUIZ_Game/static/media/icon-money.90b4793384269a869e47.png",
+    "static/media/logo.png": "/QUIZ_Game/static/media/logo.498a0312aa07892e31bc.png",
+    "index.html": "/QUIZ_Game/index.html",
+    "main.d12b737c.css.map": "/QUIZ_Game/static/css/main.d12b737c.css.map",
+    "main.cd663a58.js.map": "/QUIZ_Game/static/js/main.cd663a58.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d12b737c.css",
+    "static/js/main.cd663a58.js"
+  ]
+}
