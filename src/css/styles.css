@@ -1,0 +1,790 @@
+/* Фон и базовые стили */
+body {
+    font-family: 'Orbitron', sans-serif;  /* Для футуристического эффекта */
+    background-color: #001f3d;  /* Темно-синий фон */
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+  
+/* Контейнер приложения */
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #001f3d; /* Остается основной фон */
+}
+
+/* Контейнер фонового изображения */
+.overlay-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Перед фоном, но ниже контента */
+}
+
+/* Фоновое изображение */
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.10; /* Можно настроить прозрачность */
+}
+
+/* Основной контент (карточки, логотип, текст) */
+
+
+.quiz-container {
+  position: relative;
+  z-index: 1; /* Поверх фонового изображения */
+}
+
+  
+ /* Заголовок на главной странице */
+h1 {
+  font-size: 4rem;
+  color: #00d1ff; /* Ярко-синий для футуристичности */
+  text-align: center;
+  letter-spacing: 5px;
+  margin-top: 50px;
+  text-shadow: 0px 0px 10px #00d1ff, 0px 0px 20px #0077ff, 0px 0px 30px #00d1ff;
+  animation: neon-glow 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes neon-glow {
+  0% {
+    text-shadow: 0px 0px 10px #00d1ff, 0px 0px 20px #0077ff, 0px 0px 30px #00d1ff;
+  }
+  100% {
+    text-shadow: 0px 0px 15px #00ffff, 0px 0px 25px #00aaff, 0px 0px 40px #00ffff;
+  }
+}
+
+  
+  /* Кнопки */
+  button {
+    padding: 15px 30px;
+    background-color: #00d1ff;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    margin: 10px;
+  }
+  
+  /* Эффект при наведении на кнопки */
+  button:hover {
+    background-color: #00b0d6;
+    transform: scale(1.1);
+  }
+  
+  /* Кнопки выбора ответа */
+  .answer-button {
+    width: 300px;
+    height: 60px;
+    background-color: #333333;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    margin: 15px 0;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Эффект при наведении на кнопки выбора */
+  .answer-button:hover {
+    background-color: #00d1ff;
+    transform: scale(1.05);
+  }
+  
+  /* Эффект при клике */
+  .answer-button.selected {
+    background-color: #00d1ff;
+    color: #001f3d;
+  }
+  
+  .correct-answer {
+    background-color: #28a745!important;;
+    box-shadow: 0 0 20px #28a745;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .incorrect-answer {
+    background-color: #dc3545!important;;
+    box-shadow: 0 0 20px #dc3545;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Полоса прогресса */
+  .progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #333333;
+    position: fixed;
+    bottom: 0;
+  }
+  
+  .progress-bar-fill {
+    width: 0;
+    height: 100%;
+    background-color: #00d1ff;
+    transition: width 0.5s ease;
+  }
+  
+  /* Анимация для появления элементов */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Логотип */
+  .logo {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  
+/* Основной контейнер для викторины */
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-color: #001f3d;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-top: -40px;
+}
+  
+  /* Карточка с вопросом и вариантами ответов */
+  .quiz-card {
+    background-color: rgba(0, 0, 0, 0.7);  
+    padding: 20px;  
+    border-radius: 15px;
+    height: 450px;  
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    position: relative;  /* Для позиционирования иконки монеты */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Вопрос */
+  .quiz-question {
+    font-size: 1.8rem;  /* Уменьшаем размер шрифта */
+    color: white;
+    margin-bottom: 15px;  /* Уменьшаем отступ снизу */
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  
+  /* Стиль для кнопок ответов */
+  .answer-button {
+    width: 100%;
+    height: 50px;  /* Уменьшаем высоту кнопок */
+    background-color: #333333;
+    color: white;
+    font-size: 1.1rem;  /* Уменьшаем размер шрифта */
+    border-radius: 10px;
+    margin: 10px 0;  /* Уменьшаем отступы между кнопками */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Эффект при наведении на кнопки выбора */
+  .answer-button:hover {
+    background-color: #00d1ff;
+    transform: scale(1.05);
+  }
+  
+  /* Эффект при клике на выбранный ответ */
+  .answer-button.selected {
+    background-color: #00d1ff;
+    color: #001f3d;
+  }
+  
+  /* Полоса прогресса */
+  .progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #333333;
+    position: fixed;
+    bottom: 0;
+  }
+  
+  .progress-bar-fill {
+    width: 0;
+    height: 100%;
+    background-color: #00ddff;
+    transition: width 0.5s ease;
+  }
+  
+  .coin-container {
+    position: fixed;
+    top: calc(50% + 70px); /* Смещение вниз на 50px */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 2s ease-out, opacity 3s ease-in-out;
+  }
+  
+  .coin-container.animate {
+    transform: translate(-50%, -50%) scale(8); /* Увеличение до x8 */
+  }
+  
+  .coin-container.disappear {
+    opacity: 0;
+    transition: opacity 2.5s ease-in-out;
+  }
+  
+  .coin-image {
+    width: 100px;
+    height: 100px;
+    animation: explode 2s forwards;
+  }
+  
+  @keyframes explode {
+    0% {
+      filter: none;
+    }
+    100% {
+      filter: url(#pixelate);
+      opacity: 0;
+    }
+  }
+  
+  /* SVG фильтр для пикселизации */
+  svg {
+    width: 0;
+    height: 0;
+  }
+  
+
+  .correct-answer-counter {
+    position: absolute;
+    top: 15px;  /* Подкорректируй по необходимости */
+    left: 18px; /* Подкорректируй по необходимости */
+    background-color: #ffcc0000;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 50%;
+    min-width: 30px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+  /* Корзина с монетами в правом верхнем углу */
+.coin-basket {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #333333;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.basket-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.coin-count {
+    color: #00d1ff;
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+
+
+
+@keyframes coin-fly {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+@keyframes coin-glow {
+    0% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Стиль результата */
+.result-card {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Анимация для сообщения */
+.result-message {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(74, 182, 254); /* Цвет текста */
+  opacity: 0;
+  transform: translateY(50px);
+  position: relative;
+  transition: opacity 1s ease, transform 1s ease;
+  text-shadow: 0px 0px 3px rgb(0, 0, 0), 0px 0px 5px rgb(255, 255, 255); /* Белая обводка */
+}
+
+
+/* Класс, который будет активировать анимацию появления текста */
+.result-message.show-message {
+  opacity: 1;
+  transform: translateY(-240px);  /* Сдвиг вверх на 200px */
+}
+/* Кнопка "Повторить" внизу карточки */
+.restart-button-container {
+  position: absolute;
+  bottom: -2px; /* Опускаем кнопку на 20px вниз */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Кнопка "Повторить" при выигрыше (внизу) */
+.restart-button-container.restart-bottom {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Кнопка "Повторить" при выигрыше (опущена на 20px) */
+.restart-button-container.restart-bottom {
+  position: absolute;
+  bottom: -20px; /* Опускаем кнопку */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Кнопка "Повторить" при проигрыше (поднята на 40px) */
+.restart-button-container.restart-center {
+  display: flex;
+  justify-content: center;
+  margin-top: -40px; /* Поднимаем кнопку */
+}
+
+/* Заголовок "Вы проиграли" (опущен на 50px) */
+.result-text.lose {
+  margin-top: 50px;
+}
+
+
+/* Заголовок "Вы проиграли" (опущен на 50px) */
+.result-text.lose {
+  margin-top: 80px;
+}
+
+
+
+
+
+/* Центрирование кнопки "Начать викторину" */
+.start-button {
+  position: absolute;
+  top: 45%;
+  left: 40%;
+}
+
+
+/* Таймер для ПК */
+.timer {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  color: #ff4d4d;
+}
+
+
+/* Общие медиазапросы для мобильных устройств */
+@media (max-width: 768px) {
+  /* Изменяем размер шрифта заголовка для мобильных устройств */
+  h1 {
+    font-size: 2.5rem;
+    margin-top: 30px;
+  }
+
+  /* Уменьшаем размеры кнопок */
+  button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+  }
+
+  /* Уменьшаем размеры кнопок выбора ответа */
+  .answer-button {
+    width: 100%;
+    height: 50px;
+    font-size: 1rem;
+    margin: 8px 0;
+  }
+/* Сдвигаем контейнер викторины вниз */
+.quiz-container {
+  height: auto;
+  padding: 15px;
+  margin-top: 60px; /* Добавляем отступ сверху */
+}
+
+/* Уменьшаем размеры карточки с вопросом */
+.quiz-card {
+  padding: 15px;
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  position: relative; /* Добавляем, чтобы .timer мог позиционироваться относительно .quiz-card */
+  padding-top: 40px; /* Увеличиваем отступ сверху, чтобы таймер не налезал на текст */
+}
+
+  /* Уменьшаем размеры текста вопроса */
+  .quiz-question {
+    font-size: 1.5rem;
+  }
+
+  /* Уменьшаем размеры кнопок выбора уровня */
+  .level-button {
+    width: 100%;
+    height: 50px;
+    font-size: 1.3rem;
+    margin: 10px 0;
+  }
+
+  /* Уменьшаем размеры логотипа */
+  .logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* Изменяем стили для полосы прогресса */
+  .progress-bar {
+    height: 3px;
+  }
+
+  /* Центрируем кнопку "Начать викторину" */
+  .start-button {
+    position: absolute;
+    margin-top: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрируем кнопку */
+    width: 70%;
+    height: 50px;
+    text-align: center;
+    transition: 0.3s ease-in-out; /* Плавные анимации */
+}
+
+/* Эффект при наведении */
+.start-button:hover {
+    background-color: #00c8ff9a; /* Изменяем цвет */
+    transform: translate(-50%, -50%) scale(1.05); /* Увеличиваем кнопку */
+}
+
+
+  /* Уменьшаем размеры корзины с монетами */
+  .coin-basket {
+    padding: 8px;
+    top: 10px;
+    right: 10px;
+    margin-top: 106px; /* Добавляем отступ сверху */
+  }
+
+  .coin-basket .basket-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Скрытие элементов, которые не подходят для маленьких экранов */
+  .result-text {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Уменьшаем шрифт и размеры элементов еще больше для мобильных телефонов */
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 20px;
+  }
+
+  button {
+    padding: 8px 15px;
+    font-size: 1rem;
+  }
+
+  .answer-button {
+    height: 45px;
+    font-size: 0.9rem;
+  }
+
+  .quiz-card {
+    padding: 10px;
+    height: auto;
+    height: 400px;
+  }
+
+  .quiz-question {
+    font-size: 1.2rem;
+  }
+
+  .level-button {
+    width: 100%;
+    height: 45px;
+    font-size: 1.2rem;
+    margin: 8px 0;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .coin-basket {
+    padding: 6px;
+  }
+
+  .coin-basket .basket-icon {
+    width: 70px;
+    height: 70px;
+  }
+  .timer {
+    font-size: 19px;
+    position: absolute;
+    top: 110px; /* Фиксированная позиция сверху */
+    left: 50%;
+    transform: translateX(-50%); /* Центрируем */
+    font-weight: bold;
+    letter-spacing: 2px;
+    white-space: nowrap; /* Запрещаем перенос текста */
+    text-align: center;  /* Выравниваем текст по центру */
+    min-width: 200px; /* Гарантируем, что текст не будет сжиматься */
+  }
+  
+  /* Зелёный цвет (6-8 секунд) */
+  .timer.green {
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00, 0 0 16px #00cc00, 0 0 30px #008000;
+  }
+  
+  /* Оранжевый цвет (3-5 секунд) */
+  .timer.orange {
+    color: #ff9900;
+    text-shadow: 0 0 10px #ff9900, 0 0 16px #cc7700, 0 0 30px #994d00;
+  }
+  
+  /* Красный цвет (1-2 секунды) */
+  .timer.red {
+    color: #ff1a1a;
+    text-shadow: 0 0 10px #ff4d4d, 0 0 16px #ff1a1a, 0 0 30px #b30000;
+  }
+  
+
+  
+}
+
+/* Общие стили для логотипа */
+.logo {
+  width: 320px; /* для десктопа */
+  height: 75px;
+  display: block;
+  margin: 10px auto; /* Центрируем логотип */
+  margin-top: -50px; /* Сдвигаем логотип наверх на 50px */
+}
+
+/* Медиазапрос для мобильных устройств */
+@media (max-width: 768px) {
+  .logo {
+    width: 200px;  /* для мобильных устройств */
+    height: 60px;
+    margin-top: -20px; /* Меньший сдвиг для мобильной версии */
+  }
+}
+.notification-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid #ffcc00;
+  text-align: center;
+  z-index: 1000;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 0px 0px 15px #ffcc00, 0px 0px 30px #ffcc00;
+  animation: burn 1.5s infinite alternate;
+}
+
+@keyframes burn {
+  0% {
+    box-shadow: 0px 0px 10px #ffcc00, 0px 0px 20px #ffcc00;
+  }
+  100% {
+    box-shadow: 0px 0px 20px #ffdb4d, 0px 0px 35px #ffdb4d;
+  }
+}
+
+.notification-popup p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.notification-popup button {
+  background: #ffcc00;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 200px;
+  font-weight: bold;
+  color: black;
+  text-shadow: 0px 0px 5px #ffffff;
+  box-shadow: 0px 0px 10px #ffcc00, 0px 0px 20px #ffdb4d;
+  animation: burn-button 1.5s infinite alternate;
+}
+
+@keyframes burn-button {
+  0% {
+    box-shadow: 0px 0px 10px #ffcc00, 0px 0px 15px #ffcc00;
+  }
+  100% {
+    box-shadow: 0px 0px 15px #ffdb4d, 0px 0px 25px #ffdb4d;
+  }
+}
+
+.notification-popup button:hover {
+  background: #ffdb4d;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+}
+
+/* 📱 Адаптация под мобильные устройства */
+@media (max-width: 480px) {
+  .notification-popup {
+    width: 95%;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .notification-popup p {
+    font-size: 14px;
+  }
+
+  .notification-popup button {
+    font-size: 14px;
+    padding: 10px;
+    max-width: 180px;
+  }
+}
+
+.mystery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Добавляем позиционирование */
+  top: -120px; /* Смещаем контейнер вверх */
+  cursor: pointer;
+}
+
+.mystery-box {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  background: #44444474; /* Серый фон */
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 0 15px gold;
+  border: 2px solid gold;
+  transition: opacity 1s ease-in-out;
+}
+
+.promo-code {
+  position: absolute;
+  top: 110px; /* Поднимаем промокод еще выше */
+  background: #7d7c7cc9;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.promo-description{
+  font-size: 18px;  /* Уменьшаем размер шрифта */
+  color: white;
+  margin-bottom: 15px;  /* Уменьшаем отступ снизу */
+  font-weight: bold;
+  line-height: 1.5;
+  margin-top: -60px;
+}
+
+
+.mystery-image {
+  width: 300px;
+  height: 100px;
+
+}

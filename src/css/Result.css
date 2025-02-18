@@ -1,0 +1,40 @@
+/* Кнопка "Повторить" - базовые стили */
+.restart-button-container {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* Кнопка "Повторить" при выигрыше (опущена на 20px вниз) */
+.restart-button-container.restart-bottom {
+    bottom: -2px !important;
+}
+
+/* Кнопка "Повторить" при проигрыше (поднята на 40px) */
+.restart-button-container.restart-center {
+    bottom: 150px !important;
+}
+
+/* Заголовок "Вы проиграли" (опущен на 50px) */
+.result-text.lose {
+    margin-top: 100px !important;
+}
+
+
+  .restart-button {
+    background-color: #08b4db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+  
+  .restart-button:hover {
+    background-color: #0195b6;
+    transform: scale(1.1);
+  }

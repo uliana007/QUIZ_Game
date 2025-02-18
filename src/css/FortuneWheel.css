@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Контейнер */
+.wheel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-top: 20px;
+    background: radial-gradient(circle, #111,);
+    height: 100vh;
+}
+
+/* Окантовка колеса */
+.wheel-border {
+    width: 380px;
+    height: 380px;
+    background: linear-gradient(135deg, #ffcc00, #ff0000);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.8), inset 0 0 30px rgba(0, 0, 0, 0.9);
+    border: 8px solid #222;
+}
+
+/* Само колесо */
+.wheel {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #444, #222);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+    transition: transform 3.5s ease-out;
+}/* Сегменты с 3D-эффектом и независимым переливанием */
+.segment {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 0%;
+    clip-path: polygon(100% 50%, 0% 0%, 0% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    /* Улучшенная читабельность */
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+
+    /* Улучшенный 3D-эффект */
+    box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.6), 
+                inset 4px 4px 10px rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+
+    /* Независимое переливание */
+    animation: softColorShift 8s infinite ease-in-out alternate;
+}
+
+/* Правильное направление текста внутри сегментов */
+.segment span {
+    display: block;
+    width: 100px; /* Фиксированная ширина для центрирования */
+    transform: rotate(-60deg); /* Компенсация наклона */
+    white-space: nowrap;
+}
+
+/* Каждая ячейка переливается отдельно */
+.segment:nth-child(1) { animation-delay: 0s; }
+.segment:nth-child(2) { animation-delay: 1s; }
+.segment:nth-child(3) { animation-delay: 2s; }
+.segment:nth-child(4) { animation-delay: 3s; }
+.segment:nth-child(5) { animation-delay: 4s; }
+.segment:nth-child(6) { animation-delay: 5s; }
+
+/* Плавное изменение оттенка для каждой ячейки */
+@keyframes softColorShift {
+    0% { filter: hue-rotate(0deg) brightness(1); }
+    50% { filter: hue-rotate(30deg) brightness(1.2); }
+    100% { filter: hue-rotate(0deg) brightness(1); }
+}
+
+/* Лёгкое свечение при наведении */
+.segment:hover {
+    transform: scale(1.05);
+    filter: brightness(1.3);
+    box-shadow: 0 0 18px rgba(255, 255, 100, 0.9);
+}
+
+/* Указатель в виде треугольника вниз */
+.arrow {
+    position: absolute;
+    top: 0px; /* Чуть выше */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #000000; /* Цвет указателя */
+    filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.8));
+}
+
+
+/* Кнопка */
+.spin-button {
+    margin-top: 22px;
+    padding: 16px 32px;
+    font-size: 30px;
+    width: 130px;
+    height: 45px;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(45deg, #ff0000, #ff9900);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: 0.3s;
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}
+
+.spin-button:hover {
+    background: linear-gradient(45deg, #ff9900, #ff0000);
+    transform: scale(1.1);
+}
+
+/* Окно результата */
+.result-modal {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 300px;
+
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.result-modal p {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffcc00;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.wheel-container {
+    margin-top: -97px;
+    transform: scale(0.7); /* Уменьшение колеса */
+  }
+  
+  .spin-button {
+    font-size: 24px;
+    padding: 8px 16px;
+  }

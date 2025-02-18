@@ -1,0 +1,69 @@
+.instruction-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../assets/png/index-screen.png"); /* Фон статичный */
+}
+
+.dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+}
+
+.highlight-box {
+    position: absolute;
+    border: 3px solid #ffcc00;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #ffcc00;
+    transition: all 0.3s ease-in-out;
+    background: transparent;
+    z-index: 1002;
+}
+
+.instruction-box {
+    position: absolute; /* ✅ Добавил, чтобы менялась позиция */
+    background: rgba(255, 0, 0, 0.286);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.next-button {
+    background: #61ed25;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.next-button:hover {
+    background: #40b715 !important; /* Новый цвет при наведении */
+    color: white; /* Меняет цвет текста */
+}
+
+.instruction-description {
+    font-size: 16px; /* Уменьшенный размер текста */
+    font-weight: 200; /* Обычный (менее жирный) шрифт */
+    color: #ccc; /* Немного светлее для лучшей читабельности */
+    margin-top: 4px; /* Добавляем небольшой отступ сверху */
+  }
+  

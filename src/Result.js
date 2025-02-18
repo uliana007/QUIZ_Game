@@ -1,56 +1,62 @@
 import React, { useState, useEffect } from "react";
 import basketIcon from "./assets/png/football-goal.png";
 import coinIcon from "./assets/png/icon-money.png";
-const Result = ({ score, hasWon, coins, setCoins, restartQuiz }) => {
-  const [coinsFalling, setCoinsFalling] = useState(false);
+import FortuneWheel from "./FortuneWheel";
+import "./css/styles.css";
+import "./css/Result.css";
+
+const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
   const [showCoin, setShowCoin] = useState(false);
-  const [hasFallen, setHasFallen] = useState(false);
-  const [showMessage, setShowMessage] = useState(false);
+  const [animateCoin, setAnimateCoin] = useState(false);
+  const [disappear, setDisappear] = useState(false);
+  const [showWheel, setShowWheel] = useState(false);
+  const [showRestart, setShowRestart] = useState(!hasWon); // Показывать сразу при проигрыше
 
   useEffect(() => {
-    if (hasWon && !hasFallen) {
-      setShowCoin(true); // Покажем монету
+    if (hasWon) {
+      setShowCoin(true);
       setTimeout(() => {
-        setCoinsFalling(true); // Имитация падения монеты
+        setAnimateCoin(true);
         setTimeout(() => {
-          setCoins(prevCoins => prevCoins + 1); // Добавление монеты только один раз
-          setHasFallen(true); // Устанавливаем флаг, чтобы не добавлять монеты повторно
-        }, 2000); // Задержка перед добавлением монеты
-      }, 500); // Задержка перед началом падения монеты
+          setDisappear(true);
+          if (typeof setCoins === "function") {
+            setCoins((prevCoins) => prevCoins + 1);
+          }
+          setTimeout(() => {
+            setShowWheel(true);
+          }, 500);
+        }, 1500);
+      }, 500);
     }
-
-    setShowMessage(true); // Показываем сообщение с анимацией
-  }, [hasWon, hasFallen, setCoins]);
+  }, [hasWon, setCoins]);
 
   return (
     <div className="quiz-container">
       <div className="coin-basket">
         <img src={basketIcon} alt="basket" className="basket-icon" />
-        <span className="coin-count">{coins}</span>
+        <div className="correct-answer-counter">{correctAnswers}</div>
       </div>
       <div className="quiz-card">
-        <h1 className="result-text">Ваш результат: {score} из 5</h1>
+        <h1 className="result-text">{hasWon ? "Вы выиграли!" : "Вы проиграли."}</h1>
 
-        {/* Сообщение о выигрыше/проигрыше */}
-        <div className={`result-message ${showMessage ? "show-message" : ""}`}>
-          {hasWon ? "Вы выиграли!" : "Вы проиграли."}
-        </div>
-
-        {hasWon && showCoin && !hasFallen && (
-          <div className="coin-container">
-            <img src={coinIcon} alt="coin" className="coin-animation" />
+        {hasWon && showCoin && (
+          <div className={`coin-container ${animateCoin ? "animate" : ""} ${disappear ? "disappear" : ""}`}>
+            <img src={coinIcon} alt="coin" className="coin-image" />
           </div>
         )}
 
-        <div className="restart-button-container">
-          <button className="restart-button" onClick={restartQuiz}>
-            Повторить
-          </button>
-        </div>
+        {hasWon && showWheel && <FortuneWheel onSpinComplete={() => setShowRestart(true)} />} 
+
+        {showRestart && (
+          <div className={`restart-button-container ${hasWon ? "restart-bottom" : "restart-center"}`}>
+            <button className="restart-button" onClick={restartQuiz}>
+              Повторить
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
 };
-
 
 export default Result;
