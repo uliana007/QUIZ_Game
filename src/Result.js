@@ -37,7 +37,7 @@ const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
         <div className="correct-answer-counter">{correctAnswers}</div>
       </div>
       <div className="quiz-card">
-        <h1 className="result-text">{hasWon ? "Вы выиграли!" : "Вы проиграли."}</h1>
+        <h1 className="result-text">{hasWon ? "Вы выиграли!" : "Вы проиграли"}</h1>
 
         {hasWon && showCoin && (
           <div className={`coin-container ${animateCoin ? "animate" : ""} ${disappear ? "disappear" : ""}`}>

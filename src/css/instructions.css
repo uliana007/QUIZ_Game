@@ -11,8 +11,12 @@
     background-size: cover;
     background-position: center;
     background-image: url("../assets/png/index-screen.png"); /* Фон статичный */
+    
 }
 
+.background-image{
+    filter: blur(20px);
+}
 .dark-overlay {
     position: fixed;
     top: 0;
