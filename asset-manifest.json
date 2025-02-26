@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/QUIZ_Game/static/css/main.f484cbe9.css",
-    "main.js": "/QUIZ_Game/static/js/main.d0c29880.js",
+    "main.css": "/QUIZ_Game/static/css/main.e6dee5ff.css",
+    "main.js": "/QUIZ_Game/static/js/main.1cccadc8.js",
     "static/media/index-screen4.png": "/QUIZ_Game/static/media/index-screen4.97ff04b532ead1babad7.png",
     "static/media/fon-balls.png": "/QUIZ_Game/static/media/fon-balls.408b494f8893a3644ca0.png",
     "static/media/icon-money.png": "/QUIZ_Game/static/media/icon-money.90b4793384269a869e47.png",
     "static/media/logo.png": "/QUIZ_Game/static/media/logo.498a0312aa07892e31bc.png",
     "index.html": "/QUIZ_Game/index.html",
-    "main.f484cbe9.css.map": "/QUIZ_Game/static/css/main.f484cbe9.css.map",
-    "main.d0c29880.js.map": "/QUIZ_Game/static/js/main.d0c29880.js.map"
+    "main.e6dee5ff.css.map": "/QUIZ_Game/static/css/main.e6dee5ff.css.map",
+    "main.1cccadc8.js.map": "/QUIZ_Game/static/js/main.1cccadc8.js.map"
   },
   "entrypoints": [
-    "static/css/main.f484cbe9.css",
-    "static/js/main.d0c29880.js"
+    "static/css/main.e6dee5ff.css",
+    "static/js/main.1cccadc8.js"
   ]
 }
