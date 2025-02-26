@@ -146,17 +146,15 @@ const Quiz = () => {
 
         <div>
           {quizQuestions[currentQuestionIndex].answers.map((answer, index) => (
-           <button
-           key={index}
-           className={`answer-button ${selectedAnswer === answer ? (answerStatus === "correct" ? "correct-answer" : "incorrect-answer") : ""}`}
-           onClick={(e) => {
-             handleAnswer(answer);
-             e.target.blur(); // Убираем фокус с кнопки
-           }}
-           disabled={selectedAnswer !== null}
-         >
-           {answer}
-         </button>         
+            <button
+              key={index}
+              className={`answer-button ${selectedAnswer === answer ? (answerStatus === "correct" ? "correct-answer" : "incorrect-answer") : ""}`}
+              onClick={() => 
+                handleAnswer(answer)}
+              disabled={selectedAnswer !== null}
+            >
+              {answer}
+            </button>
           ))}
         </div>
       </div>
