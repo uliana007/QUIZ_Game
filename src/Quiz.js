@@ -76,14 +76,7 @@ const Quiz = () => {
     }, 300);
   };
   
-  document.addEventListener("DOMContentLoaded", function () {
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-      document.querySelectorAll('.answer-button').forEach(btn => {
-        btn.classList.remove('hover'); // Удаляет hover-класс, если он был добавлен
-      });
-    }
-  }); //проверка пк или мобилка для css
-  
+
   const handleNextQuestion = () => {
     setSelectedAnswer(null);
     setAnswerStatus(null);

@@ -95,19 +95,7 @@ h1 {
   }
   
  
-  @media (hover: hover) {
-    /* Эффект при наведении на кнопки выбора */
-    .answer-button:hover {
-      background-color: #00d1ff;
-      transform: scale(1.05);
-    }
-    
-    /* Эффект при клике на выбранный ответ */
-    .answer-button.selected {
-      background-color: #00d1ff;
-      color: #001f3d;
-    }
-  }
+
   
   .correct-answer {
     background-color: #28a745!important;;
