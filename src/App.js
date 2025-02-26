@@ -13,7 +13,7 @@ function App() {
       </div>
 
       {/* Основной контент */}
-      <h1>Quiz-Sport 888</h1>
+      <h1>Игра Три Восьмёрки</h1>
       <div className="logo-container">
         <img src={logoIcon} alt="Logo" className="logo" />
       </div>

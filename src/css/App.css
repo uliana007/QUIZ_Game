@@ -169,6 +169,7 @@ h1 {
   .answer-button {
     height: 45px;
     font-size: 0.9rem;
+    user-select: none;
   }
 
   .quiz-card {

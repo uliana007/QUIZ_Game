@@ -104,12 +104,14 @@ h1 {
   .answer-button:hover {
     background-color: #00d1ff;
     transform: scale(1.05);
+    user-select: none;
   }
   
   /* Эффект при клике */
   .answer-button.selected {
     background-color: #00d1ff;
     color: #001f3d;
+    user-select: none;
   }
   
   .correct-answer {
@@ -216,12 +218,14 @@ h1 {
   .answer-button:hover {
     background-color: #00d1ff;
     transform: scale(1.05);
+    user-select: none;
   }
   
   /* Эффект при клике на выбранный ответ */
   .answer-button.selected {
     background-color: #00d1ff;
     color: #001f3d;
+    user-select: none;
   }
   
   /* Полоса прогресса */
@@ -467,6 +471,7 @@ h1 {
     height: 50px;
     font-size: 1rem;
     margin: 8px 0;
+    user-select: none;
   }
 /* Сдвигаем контейнер викторины вниз */
 .quiz-container {
@@ -563,6 +568,7 @@ h1 {
   .answer-button {
     height: 45px;
     font-size: 0.9rem;
+    user-select: none;
   }
 
   .quiz-card {
