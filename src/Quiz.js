@@ -48,7 +48,6 @@ const Quiz = () => {
 
     return () => clearInterval(timer);
   }, [currentQuestionIndex, timerActive, answerStatus]);
-
   const handleAnswer = (answer) => {
     if (answerStatus !== null) return;
   
@@ -57,7 +56,6 @@ const Quiz = () => {
     setAnswerStatus(isCorrect ? "correct" : "incorrect");
   
     setTimeout(() => {
-      // Убираем фокус с кнопок после выбора ответа
       document.querySelectorAll(".answer-button").forEach((btn) => btn.blur());
   
       if (isCorrect) {
@@ -80,9 +78,14 @@ const Quiz = () => {
   
 
   const handleNextQuestion = () => {
-    setAnswerStatus(null);
     setSelectedAnswer(null);
-
+    setAnswerStatus(null);
+    
+    // Убираем фокус с кнопок после ответа
+    setTimeout(() => {
+      document.activeElement?.blur();
+    }, 100);
+  
     if (currentQuestionIndex + 1 < quizQuestions.length) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setProgress(((currentQuestionIndex + 1) / quizQuestions.length) * 100);
@@ -91,6 +94,7 @@ const Quiz = () => {
       setTimerActive(false);
     }
   };
+  
 
   const startQuiz = () => {
     setShowInstructions(true);

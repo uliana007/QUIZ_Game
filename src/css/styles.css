@@ -138,6 +138,9 @@ h1 {
   background-color: #333333; /* Возвращаем стандартный цвет */
   transform: none;
 }
+.answer-button:disabled {
+  pointer-events: none;
+}
 
   /* Полоса прогресса */
   .progress-bar {
