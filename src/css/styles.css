@@ -85,7 +85,7 @@ h1 {
   button:hover {
     background-color: #00b0d6;
     transform: scale(1.1);
-    user-select: none;
+ 
   }
   
   /* Кнопки выбора ответа */
@@ -104,20 +104,22 @@ h1 {
   .answer-button:hover {
     background-color: #00d1ff;
     transform: scale(1.05);
-    user-select: none;
+   
   }
   
   /* Эффект при клике */
   .answer-button.selected {
     background-color: #00d1ff;
     color: #001f3d;
-    user-select: none;
+
   }
   
   .correct-answer {
     background-color: #28a745!important;;
     box-shadow: 0 0 20px #28a745;
     transition: box-shadow 0.3s ease-in-out;
+    
+
   }
   
   .incorrect-answer {
@@ -126,6 +128,17 @@ h1 {
     transition: box-shadow 0.3s ease-in-out;
   }
   
+  .answer-button:active,
+.answer-button:focus {
+  outline: none;
+}
+
+/* Убираем hover-эффект после нажатия */
+.answer-button:disabled:hover {
+  background-color: #333333; /* Возвращаем стандартный цвет */
+  transform: none;
+}
+
   /* Полоса прогресса */
   .progress-bar {
     width: 100%;
@@ -211,21 +224,18 @@ h1 {
     border-radius: 10px;
     margin: 10px 0;  /* Уменьшаем отступы между кнопками */
     transition: background-color 0.3s ease, transform 0.3s ease;
-    user-select: none;
   }
   
   /* Эффект при наведении на кнопки выбора */
   .answer-button:hover {
     background-color: #00d1ff;
     transform: scale(1.05);
-    user-select: none;
   }
   
   /* Эффект при клике на выбранный ответ */
   .answer-button.selected {
     background-color: #00d1ff;
     color: #001f3d;
-    user-select: none;
   }
   
   /* Полоса прогресса */
@@ -471,7 +481,6 @@ h1 {
     height: 50px;
     font-size: 1rem;
     margin: 8px 0;
-    user-select: none;
   }
 /* Сдвигаем контейнер викторины вниз */
 .quiz-container {
@@ -568,7 +577,6 @@ h1 {
   .answer-button {
     height: 45px;
     font-size: 0.9rem;
-    user-select: none;
   }
 
   .quiz-card {

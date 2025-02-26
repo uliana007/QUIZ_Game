@@ -51,16 +51,19 @@ const Quiz = () => {
 
   const handleAnswer = (answer) => {
     if (answerStatus !== null) return;
-
+  
     const isCorrect = answer === quizQuestions[currentQuestionIndex].correctAnswer;
     setSelectedAnswer(answer);
     setAnswerStatus(isCorrect ? "correct" : "incorrect");
-
+  
     setTimeout(() => {
+      // Убираем фокус с кнопок после выбора ответа
+      document.querySelectorAll(".answer-button").forEach((btn) => btn.blur());
+  
       if (isCorrect) {
         setCorrectAnswers((prev) => prev + 1);
         setCorrectStreak((prev) => prev + 1);
-
+  
         if (correctStreak + 1 === 8) {
           setHasWon(true);
           setIsFinished(true);
@@ -74,6 +77,7 @@ const Quiz = () => {
       }
     }, 300);
   };
+  
 
   const handleNextQuestion = () => {
     setAnswerStatus(null);
