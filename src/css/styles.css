@@ -94,12 +94,10 @@ h1 {
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
   
- 
-
   
   .correct-answer {
-    background-color: #28a745!important;;
-    box-shadow: 0 0 20px #28a745;
+    background-color: #a128a7!important;;
+    box-shadow: 0 0 20px #9a28a7;
     transition: box-shadow 0.3s ease-in-out;
     
 
@@ -186,17 +184,6 @@ h1 {
     line-height: 1.5;
   }
   
-  /* Стиль для кнопок ответов */
-  .answer-button {
-    width: 100%;
-    height: 50px;  /* Уменьшаем высоту кнопок */
-    background-color: #333333;
-    color: white;
-    font-size: 1.1rem;  /* Уменьшаем размер шрифта */
-    border-radius: 10px;
-    margin: 10px 0;  /* Уменьшаем отступы между кнопками */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
  
   /* Полоса прогресса */
   .progress-bar {
