@@ -74,11 +74,7 @@ h1 {
     margin: 10px;
   }
   
-  /* Эффект при наведении на кнопки */
-  button:hover {
-    background-color: #00b0d6;
-    transform: scale(1.1);
-  }
+
 
   /* Логотип */
   .logo {

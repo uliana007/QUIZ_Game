@@ -53,7 +53,7 @@ const Quiz = () => {
   
     const isCorrect = answer === quizQuestions[currentQuestionIndex].correctAnswer;
     setSelectedAnswer(answer);
-    setAnswerStatus(isCorrect ? "correct" : "incorrect");
+    setAnswerStatus(isCorrect ? "correct" : "incorrect"); //выделение варианта ответа зеленым или
   
     setTimeout(() => {
       document.querySelectorAll(".answer-button").forEach((btn) => btn.blur());
@@ -76,7 +76,14 @@ const Quiz = () => {
     }, 300);
   };
   
-
+  document.addEventListener("DOMContentLoaded", function () {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      document.querySelectorAll('.answer-button').forEach(btn => {
+        btn.classList.remove('hover'); // Удаляет hover-класс, если он был добавлен
+      });
+    }
+  }); //проверка пк или мобилка для css
+  
   const handleNextQuestion = () => {
     setSelectedAnswer(null);
     setAnswerStatus(null);

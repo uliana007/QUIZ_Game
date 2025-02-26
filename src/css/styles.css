@@ -80,13 +80,7 @@ h1 {
     transition: all 0.3s ease;
     margin: 10px;
   }
-  
-  /* Эффект при наведении на кнопки */
-  button:hover {
-    background-color: #00b0d6;
-    transform: scale(1.1);
- 
-  }
+
   
   /* Кнопки выбора ответа */
   .answer-button {
@@ -100,18 +94,19 @@ h1 {
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
   
-  /* Эффект при наведении на кнопки выбора */
-  .answer-button:hover {
-    background-color: #00d1ff;
-    transform: scale(1.05);
-   
-  }
-  
-  /* Эффект при клике */
-  .answer-button.selected {
-    background-color: #00d1ff;
-    color: #001f3d;
-
+ 
+  @media (hover: hover) {
+    /* Эффект при наведении на кнопки выбора */
+    .answer-button:hover {
+      background-color: #00d1ff;
+      transform: scale(1.05);
+    }
+    
+    /* Эффект при клике на выбранный ответ */
+    .answer-button.selected {
+      background-color: #00d1ff;
+      color: #001f3d;
+    }
   }
   
   .correct-answer {
@@ -128,20 +123,6 @@ h1 {
     transition: box-shadow 0.3s ease-in-out;
   }
   
-  .answer-button:active,
-.answer-button:focus {
-  outline: none;
-}
-
-/* Убираем hover-эффект после нажатия */
-.answer-button:disabled:hover {
-  background-color: #333333; /* Возвращаем стандартный цвет */
-  transform: none;
-}
-.answer-button:disabled {
-  pointer-events: none;
-}
-
   /* Полоса прогресса */
   .progress-bar {
     width: 100%;
@@ -228,19 +209,7 @@ h1 {
     margin: 10px 0;  /* Уменьшаем отступы между кнопками */
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
-  
-  /* Эффект при наведении на кнопки выбора */
-  .answer-button:hover {
-    background-color: #00d1ff;
-    transform: scale(1.05);
-  }
-  
-  /* Эффект при клике на выбранный ответ */
-  .answer-button.selected {
-    background-color: #00d1ff;
-    color: #001f3d;
-  }
-  
+ 
   /* Полоса прогресса */
   .progress-bar {
     width: 100%;
@@ -248,13 +217,6 @@ h1 {
     background-color: #333333;
     position: fixed;
     bottom: 0;
-  }
-  
-  .progress-bar-fill {
-    width: 0;
-    height: 100%;
-    background-color: #00ddff;
-    transition: width 0.5s ease;
   }
   
   .coin-container {
