@@ -12,11 +12,10 @@
     font-size: 1.8rem; /* Уменьшенный размер шрифта */
     color: #00d1ff;
     text-shadow: 0px 0px 10px #00d1ff, 0px 0px 20px #0077ff, 0px 0px 30px #00d1ff;
-    z-index: 99999; /* Самый верхний слой */
     font-weight: bold;
     pointer-events: none; /* Чтобы не мешало кликам */
     white-space: nowrap; /* Запрещает перенос строки */
-    
+    z-index: 1000;
     max-width: 90vw; /* Ограничение ширины */
 }
 

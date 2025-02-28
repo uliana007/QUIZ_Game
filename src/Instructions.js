@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./css/instructions.css";
-
 const instructionSteps = [
   {
     text: "Корзина",

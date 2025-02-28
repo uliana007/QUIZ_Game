@@ -60,6 +60,7 @@ h1 {
   margin-top: 50px;
   text-shadow: 0px 0px 10px #00d1ff, 0px 0px 20px #0077ff, 0px 0px 30px #00d1ff;
   animation: neon-glow 1.5s infinite alternate ease-in-out;
+  z-index: 2000;
 }
 
 @keyframes neon-glow {
