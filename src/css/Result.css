@@ -1,26 +1,31 @@
+/* Фон и базовые стили */
+* {
+  font-family: 'Orbitron', sans-serif !important;
+}
 /* Кнопка "Повторить" - базовые стили */
 .restart-button-container {
-    position: absolute !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
+    position: absolute ;
+    left: 50% ;
+    transform: translateX(-50%) ;
+    width: 100% ;
+    display: flex ;
+    justify-content: center;
+    z-index: 20;
 }
 
 /* Кнопка "Повторить" при выигрыше (опущена на 20px вниз) */
 .restart-button-container.restart-bottom {
-    bottom: -2px !important;
+    bottom: -2px ;
 }
 
 /* Кнопка "Повторить" при проигрыше (поднята на 40px) */
 .restart-button-container.restart-center {
-    bottom: 150px !important;
+    bottom: 150px;
 }
 
 /* Заголовок "Вы проиграли" (опущен на 50px) */
 .result-text.lose {
-    margin-top: 100px !important;
+    margin-top: 100px;
 }
 
 

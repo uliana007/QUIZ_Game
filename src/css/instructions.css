@@ -1,8 +1,13 @@
-/* Заголовок квиза поверх всех элементов */
+/* Фон и базовые стили */
+* {
+    font-family: 'Orbitron', sans-serif !important;
+  }
+  
+  /* Заголовок квиза поверх всех элементов */
 .quiz-title {
     position: fixed;
     top: 0px;
-    left: 50%;
+    left: 46%;
     transform: translateX(-50%);
     font-size: 1.8rem; /* Уменьшенный размер шрифта */
     color: #00d1ff;
@@ -61,8 +66,8 @@
     padding: 15px;
     border-radius: 10px;
     text-align: center;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 900; /* Максимальная жирность */
 }
 
 .next-button {
@@ -84,7 +89,7 @@
 
 .instruction-description {
     font-size: 16px; /* Уменьшенный размер текста */
-    font-weight: 200; /* Обычный (менее жирный) шрифт */
+    font-weight: 550; /* Обычный (менее жирный) шрифт */
     color: #ccc; /* Немного светлее для лучшей читабельности */
     margin-top: 4px; /* Добавляем небольшой отступ сверху */
   }

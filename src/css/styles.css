@@ -1,4 +1,9 @@
 /* Фон и базовые стили */
+* {
+  font-family: 'Orbitron', sans-serif !important;
+}
+
+
 body {
     font-family: 'Orbitron', sans-serif;  /* Для футуристического эффекта */
     background-color: #001f3d;  /* Темно-синий фон */
@@ -66,20 +71,20 @@ h1 {
   }
 }
 
-  
-  /* Кнопки */
-  button {
-    padding: 15px 30px;
-    background-color: #00d1ff;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    margin: 10px;
-  }
+button {
+  padding: 15px 30px;
+  background-color: #00d1ff;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  font-weight: 550; /* Максимальная жирность */
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  margin: 10px;
+}
+
 
   
   /* Кнопки выбора ответа */
@@ -96,8 +101,8 @@ h1 {
   
   
   .correct-answer {
-    background-color: #a128a7!important;;
-    box-shadow: 0 0 20px #9a28a7;
+    background-color: #28a745!important;;
+    box-shadow: 0 0 20px #28a745;
     transition: box-shadow 0.3s ease-in-out;
     
 
@@ -260,7 +265,7 @@ h1 {
     padding: 10px;
     border-radius: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+    z-index: 1;
 }
 
 .basket-icon {
@@ -328,45 +333,6 @@ h1 {
   opacity: 1;
   transform: translateY(-240px);  /* Сдвиг вверх на 200px */
 }
-/* Кнопка "Повторить" внизу карточки */
-.restart-button-container {
-  position: absolute;
-  bottom: -2px; /* Опускаем кнопку на 20px вниз */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-/* Кнопка "Повторить" при выигрыше (внизу) */
-.restart-button-container.restart-bottom {
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-/* Кнопка "Повторить" при выигрыше (опущена на 20px) */
-.restart-button-container.restart-bottom {
-  position: absolute;
-  bottom: -20px; /* Опускаем кнопку */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-/* Кнопка "Повторить" при проигрыше (поднята на 40px) */
-.restart-button-container.restart-center {
-  display: flex;
-  justify-content: center;
-  margin-top: -40px; /* Поднимаем кнопку */
-}
 
 /* Заголовок "Вы проиграли" (опущен на 50px) */
 .result-text.lose {
@@ -388,6 +354,7 @@ h1 {
   position: absolute;
   top: 45%;
   left: 40%;
+  font-family: 'Orbitron', sans-serif;
 }
 
 

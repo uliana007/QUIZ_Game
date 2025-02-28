@@ -1,4 +1,34 @@
 /* Фон и базовые стили */
+* {
+  font-family: 'Orbitron', sans-serif !important;
+}
+
+/* Карточка-инструкция */
+.instructions-card {
+  background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный эффект */
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 20px auto;
+  width: 80%;
+  height: 365px;
+  max-width: 500px;
+  margin-top: 0; /* Убираем отступ сверху */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+.instructions-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.instructions-card p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Фон и базовые стили */
 body {
     font-family: 'Orbitron', sans-serif;  /* Для футуристического эффекта */
     background-color: #001f3d;  /* Темно-синий фон */
@@ -36,9 +66,28 @@ body {
   object-fit: cover;
   opacity: 0.10; /* Можно настроить прозрачность */
 }
+.rules {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Отступ между пунктами */
+}
 
-/* Основной контент (карточки, логотип, текст) */
-  
+.rule {
+  display: flex;
+  align-items: flex-start;
+}
+
+.rule span {
+  flex-shrink: 0; /* Эмодзи не сжимается */
+  width: 25px; /* Фиксированная ширина для выравнивания */
+  text-align: center;
+}
+
+.rule p {
+  margin: 0;
+  text-align: left;
+}
+
  /* Заголовок на главной странице */
 h1 {
   font-size: 4rem;
@@ -49,6 +98,24 @@ h1 {
   text-shadow: 0px 0px 10px #00d1ff, 0px 0px 20px #0077ff, 0px 0px 30px #00d1ff;
   animation: neon-glow 1.5s infinite alternate ease-in-out;
 }
+h3 {
+  margin-bottom: 10px; /* Уменьшаем отступ снизу */
+  margin-top: 150px;
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.8); /* Чуть приглушенный белый */
+  text-align: center;
+  margin-top: 30px;
+  font-weight: 300; /* Легкий, но читаемый */
+  text-shadow: 0 2px px rgba(128, 128, 128, 0.5); /* Мягкая тень */
+  letter-spacing: 2px; /* Легкое разряжение букв */
+  padding: 10px;
+  border-radius: 10px; /* Округление углов */
+  background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+  display: inline-block; /* Подстраивается под текст */
+  backdrop-filter: blur(5px); /* Легкое размытие фона */
+}
+
+
 
 @keyframes neon-glow {
   0% {
@@ -74,7 +141,15 @@ h1 {
     margin: 10px;
   }
   
+/* Дополнительно можно поднять всю welcome-card */
+.welcome-card {
+  margin-top: -80px; /* Поднимаем весь блок с заголовком */
+}
 
+/* Заголовок "Правила игры" */
+.instructions-card h2 {
+  margin-top: -10px; /* Поднимаем заголовок на 20px выше */
+}
 
   /* Логотип */
   .logo {
@@ -87,7 +162,7 @@ h1 {
 
 /* Центрирование кнопки "Начать викторину" */
 .start-button {
-  position: absolute;
+  margin-top: 45% !important;
   top: 45%;
   left: 40%;
 }
@@ -113,8 +188,7 @@ h1 {
   }
   /* Центрируем кнопку "Начать викторину" */
   .start-button {
-    position: absolute;
-    margin-top: 30%;
+    transform: translateY(20px);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* Центрируем кнопку */

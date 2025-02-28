@@ -53,7 +53,7 @@ const Instructions = ({ startGame }) => {
 
   return (
     <>
-      <h1 className="quiz-title">Quiz-Sport 888</h1>
+      <h1 className="quiz-title">Игра Три Восьмёрки</h1>
       <div className="instruction-overlay">
   
         {/* Затемненный фон с вырезанным окном */}

@@ -26,14 +26,14 @@ export default App;
 
 
 // import React from "react";
-// import FortuneWheel from "./FortuneWheel";
+// import Matreshka from "./Matreshka";
 
-// const App = () => {
+// function App() {
 //   return (
-//     <div className="app-container">
-//       <FortuneWheel />
+//     <div className="App">
+//       <Matreshka />
 //     </div>
 //   );
-// };
+// }
 
 // export default App;

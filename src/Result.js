@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import basketIcon from "./assets/png/football-goal.png";
 import coinIcon from "./assets/png/icon-money.png";
-import FortuneWheel from "./FortuneWheel";
 import "./css/styles.css";
 import "./css/Result.css";
+import Matreshka from "./Matreshka";
 
 const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
   const [showCoin, setShowCoin] = useState(false);
   const [animateCoin, setAnimateCoin] = useState(false);
   const [disappear, setDisappear] = useState(false);
   const [showWheel, setShowWheel] = useState(false);
-  const [showRestart, setShowRestart] = useState(!hasWon); // Показывать сразу при проигрыше
+  const [showRestart, setShowRestart] = useState(false); // Теперь скрыто изначально
 
   useEffect(() => {
     if (hasWon) {
@@ -27,8 +27,14 @@ const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
           }, 500);
         }, 1500);
       }, 500);
+    } else {
+      setShowRestart(true); // Если проиграл, сразу показать кнопку
     }
   }, [hasWon, setCoins]);
+
+  const handlePromoDisplayed = () => {
+    setShowRestart(true); // Показать кнопку после отображения промокода
+  };
 
   return (
     <div className="quiz-container">
@@ -45,7 +51,7 @@ const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
           </div>
         )}
 
-        {hasWon && showWheel && <FortuneWheel onSpinComplete={() => setShowRestart(true)} />} 
+        {hasWon && showWheel && <Matreshka onPromoDisplayed={handlePromoDisplayed} />} 
 
         {showRestart && (
           <div className={`restart-button-container ${hasWon ? "restart-bottom" : "restart-center"}`}>
