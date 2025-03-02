@@ -1,20 +1,27 @@
 {
   "files": {
-    "main.css": "/QUIZ_Game/static/css/main.683e623f.css",
+    "main.css": "/QUIZ_Game/static/css/main.a2ce4705.css",
     "main.js": "/QUIZ_Game/static/js/main.0a8a8815.js",
     "static/media/index-screen4.png": "/QUIZ_Game/static/media/index-screen4.97ff04b532ead1babad7.png",
+    "static/media/5_Some_Times_Later-v2.otf": "/QUIZ_Game/static/media/5_Some_Times_Later-v2.a2ecf35c14e90b192dff.otf",
+    "static/media/dushav 5.otf": "/QUIZ_Game/static/media/dushav 5.39a8d5b097ceefb54f0d.otf",
+    "static/media/CeltesSP 2-i.otf": "/QUIZ_Game/static/media/CeltesSP 2-i.90d3c92846358266f14a.otf",
     "static/media/fon-balls.png": "/QUIZ_Game/static/media/fon-balls.408b494f8893a3644ca0.png",
     "static/media/icon-money.png": "/QUIZ_Game/static/media/icon-money.90b4793384269a869e47.png",
+    "static/media/BlobSpongeyLowercase-wKq3-v2.ttf": "/QUIZ_Game/static/media/BlobSpongeyLowercase-wKq3-v2.3e72d6e3afe4968408b0.ttf",
+    "static/media/Pastah (trial) Bold.otf": "/QUIZ_Game/static/media/Pastah (trial) Bold.d63ee4ead8d3203a3ddc.otf",
+    "static/media/Monocraft.otf": "/QUIZ_Game/static/media/Monocraft.9034fdcafc181f3307a1.otf",
     "static/media/minecraft-ten-font-cyrillic.ttf": "/QUIZ_Game/static/media/minecraft-ten-font-cyrillic.941842d11255509fb0f6.ttf",
     "static/media/matryoshka-top.png": "/QUIZ_Game/static/media/matryoshka-top.dcbeb6f74c762261c32a.png",
+    "static/media/1_Sponge_Bob_Ru_Uk_En_by_Ruslan_Chuchko-v2.otf": "/QUIZ_Game/static/media/1_Sponge_Bob_Ru_Uk_En_by_Ruslan_Chuchko-v2.5f2fd04c8128d22d0b59.otf",
     "static/media/matreshka.png": "/QUIZ_Game/static/media/matreshka.53dfdf20ff8ba90e44bd.png",
     "static/media/logo.png": "/QUIZ_Game/static/media/logo.498a0312aa07892e31bc.png",
     "index.html": "/QUIZ_Game/index.html",
-    "main.683e623f.css.map": "/QUIZ_Game/static/css/main.683e623f.css.map",
+    "main.a2ce4705.css.map": "/QUIZ_Game/static/css/main.a2ce4705.css.map",
     "main.0a8a8815.js.map": "/QUIZ_Game/static/js/main.0a8a8815.js.map"
   },
   "entrypoints": [
-    "static/css/main.683e623f.css",
+    "static/css/main.a2ce4705.css",
     "static/js/main.0a8a8815.js"
   ]
 }
