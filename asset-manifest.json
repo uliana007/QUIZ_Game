@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/QUIZ_Game/static/css/main.94040caa.css",
+    "main.css": "/QUIZ_Game/static/css/main.707c9d21.css",
     "main.js": "/QUIZ_Game/static/js/main.0a8a8815.js",
     "static/media/index-screen4.png": "/QUIZ_Game/static/media/index-screen4.97ff04b532ead1babad7.png",
     "static/media/fon-balls.png": "/QUIZ_Game/static/media/fon-balls.408b494f8893a3644ca0.png",
     "static/media/icon-money.png": "/QUIZ_Game/static/media/icon-money.90b4793384269a869e47.png",
+    "static/media/minecraft-ten-font-cyrillic.ttf": "/QUIZ_Game/static/media/minecraft-ten-font-cyrillic.941842d11255509fb0f6.ttf",
     "static/media/matryoshka-top.png": "/QUIZ_Game/static/media/matryoshka-top.dcbeb6f74c762261c32a.png",
     "static/media/matreshka.png": "/QUIZ_Game/static/media/matreshka.53dfdf20ff8ba90e44bd.png",
     "static/media/logo.png": "/QUIZ_Game/static/media/logo.498a0312aa07892e31bc.png",
     "index.html": "/QUIZ_Game/index.html",
-    "main.94040caa.css.map": "/QUIZ_Game/static/css/main.94040caa.css.map",
+    "main.707c9d21.css.map": "/QUIZ_Game/static/css/main.707c9d21.css.map",
     "main.0a8a8815.js.map": "/QUIZ_Game/static/js/main.0a8a8815.js.map"
   },
   "entrypoints": [
-    "static/css/main.94040caa.css",
+    "static/css/main.707c9d21.css",
     "static/js/main.0a8a8815.js"
   ]
 }
