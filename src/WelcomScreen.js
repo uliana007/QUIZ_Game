@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/App.css";
+import "./css/WelcomeScreen.css";
 
 const WelcomeScreen = ({ startQuiz }) => {
   return (

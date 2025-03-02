@@ -1,0 +1,163 @@
+/* Основные стили */
+body {
+  margin: 0;
+  background-color: #f0f8ff; /* Светло-голубой фон */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+.welcome-card {
+  background-color: #dcf2ff; /* Белый фон карточки */
+  border-radius: 25px; /* Увеличиваем скругление углов */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.781), /* Основная тень */
+    inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
+  padding: 5%; /* Используем проценты для отступов */
+  min-height: 50vh; /* Используем vh для высоты */
+  text-align: center; /* Центрируем содержимое по горизонтали */
+  margin-top: -7vh; /* Перемещение карточки выше */
+  animation: float 3s ease-in-out infinite; /* Анимация плавающего эффекта */
+  border: 1px solid rgb(255, 255, 255); /* Лёгкая обводка для объёма */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Отступ между элементами */
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Плавное поднятие и опускание */
+  }
+}
+
+.welcome-card h3 {
+  font-size: clamp(18px, 5vw, 24px); /* Гибкий размер шрифта */
+  color: #1e3c72; /* Темно-синий цвет для заголовка */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Тень для текста */
+}
+
+.instructions-card {
+  background-color: #88b2efbd; /* Светло-синий фон для карточки с правилами */
+  border-radius: 15px; /* Увеличиваем скругление углов */
+  padding: 5%; /* Используем проценты для отступов */
+  width: 90%; /* Уменьшаем ширину карточки */
+  max-width: 400px; /* Ограничиваем максимальную ширину */
+  margin: 0 auto; /* Центрируем карточку */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Усиление тени */
+  margin-top: -2vh; /* Используем vh для отступов */
+}
+
+.instructions-card h2 {
+  font-size: clamp(16px, 4vw, 20px); /* Гибкий размер шрифта */
+  color: #1e3c72; /* Темно-синий цвет для заголовка правил */
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Тень для текста */
+}
+
+.rules {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff; /* Белый фон для каждого правила */
+  border-radius: 12px; /* Увеличиваем скругление углов */
+  padding: 10px; /* Уменьшаем отступы для мобильных устройств */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Более выраженная тень */
+  transform: scale(1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Анимация при наведении */
+}
+
+.rule:hover {
+  transform: scale(1.03); /* Увеличение при наведении */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Усиление тени */
+}
+
+.rule span {
+  font-size: clamp(16px, 4vw, 20px); /* Гибкий размер шрифта */
+  color: #1e3c72; /* Темно-синий цвет для эмодзи */
+}
+
+.rule p {
+  font-size: clamp(12px, 3vw, 14px); /* Гибкий размер шрифта */
+  color: #000000; /* Темно-серый цвет для текста */
+  margin: 0;
+  font-weight: 550; /* Делаем шрифт более толстым */
+}
+
+.start-button {
+  background-color: #1e3c72;
+  color: #ffffff;
+  border: 2px solid #ffffff; /* Белая окантовка */
+  padding: 10px 20px;
+  font-size: clamp(14px, 4vw, 16px);
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  align-self: center; /* Центрирование кнопки */
+  margin-top: auto; /* Сместим кнопку в самый низ экрана */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.867);
+  animation: pulse 1.5s infinite; /* Анимация пульсации */
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* Увеличение при пульсации */
+  }
+}
+
+.start-button:hover {
+  background-color: #2a5298; /* Более светлый синий при наведении */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Усиление тени */
+}
+
+.start-button:active {
+  transform: scale(0.8); /* Увеличенный эффект нажатия */
+  background-color: #142b61; /* Темно-синий цвет при нажатии */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Уменьшение тени при нажатии */
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 480px) {
+  .welcome-card {
+    min-height: auto; /* Убираем фиксированную высоту */
+    padding: 10px; /* Уменьшаем внутренние отступы */
+  }
+
+  .start-button {
+    margin-top: 10px; /* Уменьшаем отступ для кнопки */
+  }
+}
+
+/* Адаптация для разрешения 360x780 */
+@media (max-width: 360px) {
+  .welcome-card {
+    margin-top: -3vh; /* Уменьшаем отступ */
+    margin-top: -7vh; /* Перемещение карточки выше */
+  }
+
+  .instructions-card {
+    padding: 10px; /* Уменьшаем отступы */
+  }
+
+  .start-button {
+    padding: 8px 16px; /* Уменьшаем отступы для кнопки */
+  }
+}
+

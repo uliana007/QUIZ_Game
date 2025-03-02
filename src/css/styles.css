@@ -5,14 +5,70 @@
 } */
 
 
+/* Подключение каждого шрифта отдельно */
 @font-face {
-  font-family: 'Minecraft Ten';
-  src: url('../assets/fonts/minecraft-ten-font-cyrillic.ttf') format('truetype');
+  font-family: 'Pastah';
+  src: url('../assets/fonts/Pastah (trial) Bold.otf') format('truetype');
 }
 
-* {
-  font-family: 'Minecraft Ten', sans-serif;
+@font-face {
+  font-family: 'Monocraft';
+  src: url('../assets/fonts/Monocraft.otf') format('opentype');
 }
+
+@font-face {
+  font-family: 'Sponge Bob';
+  src: url('../assets/fonts/1_Sponge_Bob_Ru_Uk_En_by_Ruslan_Chuchko-v2.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Some Times Later';
+  src: url('../assets/fonts/5_Some_Times_Later-v2.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Blob Spongey';
+  src: url('../assets/fonts/BlobSpongeyLowercase-wKq3-v2.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Celtes';
+  src: url('../assets/fonts/CeltesSP\ 2-i.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Dushav';
+  src: url('../assets/fonts/dushav 5.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'minecraft ten font cyrillppic';
+  src: url('../assets/fonts/minecraft-ten-font-cyrillic.ttf') format('opentype');
+}
+
+/* Использование шрифтов */
+* {
+  /* font-family: 'Blob Spongey', sans-serif; Используем имя шрифта, а не имя файла */
+  
+  /* font-family: 'Sponge Bob', sans-serif; */
+
+  /* font-family: 'Some Times Later', serif; */
+
+  /* font-family: 'Blob Spongey', sans-serif; */
+
+  /* font-family: 'Pastah', sans-serif; */
+
+  font-family: 'Monocraft', sans-serif;
+
+  /* font-family: 'Celtes', sans-serif; */
+
+  /* font-family: 'Dushav', sans-serif; */
+
+  /* font-family: 'minecraft ten font cyrillic', sans-serif; */
+
+}
+
+
 
 
 
