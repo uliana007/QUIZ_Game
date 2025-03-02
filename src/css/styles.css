@@ -350,14 +350,6 @@ button {
 
 
 
-/* Центрирование кнопки "Начать викторину" */
-.start-button {
-  position: absolute;
-  top: 45%;
-  left: 40%;
-  font-family: 'Orbitron', sans-serif;
-}
-
 
 /* Таймер для ПК */
 .timer {
@@ -430,25 +422,6 @@ button {
   .progress-bar {
     height: 3px;
   }
-
-  /* Центрируем кнопку "Начать викторину" */
-  .start-button {
-    position: absolute;
-    margin-top: 30%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Центрируем кнопку */
-    width: 70%;
-    height: 50px;
-    text-align: center;
-    transition: 0.3s ease-in-out; /* Плавные анимации */
-}
-
-/* Эффект при наведении */
-.start-button:hover {
-    background-color: #00c8ff9a; /* Изменяем цвет */
-    transform: translate(-50%, -50%) scale(1.05); /* Увеличиваем кнопку */
-}
 
 
   /* Уменьшаем размеры корзины с монетами */
