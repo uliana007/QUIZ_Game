@@ -170,3 +170,18 @@ body {
   text-overflow: ellipsis;
   z-index: 20;
 }
+
+
+/* Убираем обводку при фокусе и активном состоянии */
+button:focus, button:active,
+.matryoshka:focus, .matryoshka:active,
+.matryoshka-top img:focus, .matryoshka-top img:active,
+.matryoshka-body img:focus, .matryoshka-body img:active {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Убираем выделение при тапе на iOS */
+}
+
+/* Убираем обводку для всех элементов, если нужно */
+*:focus {
+  outline: none;
+}
