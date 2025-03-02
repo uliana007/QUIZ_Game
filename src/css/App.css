@@ -1,7 +1,6 @@
 /* Основные стили */
 body {
   margin: 0;
-  font-family: 'Orbitron', sans-serif !important;
   background-color: #f0f8ff; /* Светло-голубой фон */
   display: flex;
   justify-content: center;

@@ -1,8 +1,4 @@
-/* Фон и базовые стили */
-* {
-    font-family: 'Orbitron', sans-serif !important;
-  }
-  
+
   /* Заголовок квиза поверх всех элементов */
 .quiz-title {
     position: fixed;

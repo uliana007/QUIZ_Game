@@ -1,7 +1,4 @@
-/* Фон и базовые стили */
-* {
-  font-family: 'Orbitron', sans-serif !important;
-}
+
 /* Кнопка "Повторить" - базовые стили */
 .restart-button-container {
     position: absolute ;

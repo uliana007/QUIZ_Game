@@ -51,7 +51,6 @@
     /* Улучшенная читабельность */
     font-size: 16px;
     font-weight: bold;
-    font-family: 'Orbitron', sans-serif;
     color: white;
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
 
@@ -117,7 +116,6 @@
     width: 130px;
     height: 45px;
     font-weight: bold;
-    font-family: 'Orbitron', sans-serif;
     background: linear-gradient(45deg, #ff0000, #ff9900);
     border: none;
     color: white;
@@ -153,7 +151,6 @@
 .result-modal p {
     font-size: 24px;
     font-weight: bold;
-    font-family: 'Orbitron', sans-serif;
     color: #ffcc00;
 }
 
@@ -186,7 +183,6 @@
     top: 150px !important;   /* Сдвиг вниз */
     font-size: 20px;
     font-weight: bold;
-    font-family: 'Orbitron', sans-serif;
     color: white;
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
     cursor: pointer;
