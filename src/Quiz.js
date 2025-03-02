@@ -148,7 +148,7 @@ const Quiz = () => {
 
       <div className="quiz-card">
         <h2 className="quiz-question">{quizQuestions[currentQuestionIndex].question}</h2>
-        <div className={`timer ${timeLeft > 5 ? "green" : timeLeft > 2 ? "orange" : "red"}`}>
+        <div className={`timer ${timeLeft > 5 ? "green" : timeLeft > 3 ? "orange" : "red"}`}>
           Осталось времени: {timeLeft} сек
         </div>
 
