@@ -30,7 +30,7 @@ body {
 
 .game-container h1 {
   position: relative;
-  top: -60px;
+  top: -40px;
   margin: 0;
   font-size: 26px;
   background: rgba(51, 66, 161, 0.684); /* Полупрозрачный фон */

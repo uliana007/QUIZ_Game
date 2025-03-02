@@ -1,8 +1,16 @@
 /* Фон и базовые стили */
-* {
+/* * {
   font-family: 'Orbitron', sans-serif !important;
-}
 
+} */
+
+@font-face {
+  font-family: 'minecraft-ten-font-cyrillic'; /* Название шрифта, которое вы будете использовать */
+  src: url('../assets/fonts/minecraft-ten-font-cyrillic.ttf') format('ttf'), /* Подключение WOFF2 */
+       url('../assets/fonts/minecraft-ten-font-cyrillic.ttf') format('ttf'); /* Подключение WOFF */
+  font-weight: normal; /* Укажите вес шрифта */
+  font-style: normal; /* Укажите стиль */
+}
 
 body {
     font-family: 'Orbitron', sans-serif;  /* Для футуристического эффекта */
