@@ -68,50 +68,64 @@
     z-index: 1002;
 }
 
-.instruction-box {
-    position: absolute; /* ✅ Добавил, чтобы менялась позиция */
-    background: rgba(255, 0, 0, 0.286);
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 900; /* Максимальная жирность */
-    box-shadow: 
-    0 20px 32px rgba(208, 208, 208, 0.781), /* Основная тень */
-    inset 0 8px 16px rgba(0, 0, 0, 0.719); /* Внутренняя тень для объёма */
-    border: 3px solid rgba(255, 255, 255, 0.579); /* Лёгкая обводка для объёма */
+/* Анимация плавания */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0); /* Исходное положение */
+  }
+  50% {
+    transform: translateY(-10px); /* Поднимаем элемент вверх */
+  }
 }
-.next-button {
-    background: #61ed25;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-weight: bold;
-    box-shadow: 
-      0 8px 5px rgba(255, 255, 255, 0.604), /* Основная тень */
-      inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
-    border: 2px solid rgba(255, 255, 255, 0.947); /* Лёгкая обводка для объёма */
-    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease; /* Плавные переходы */
-  }
-  
-  .next-button:hover {
-    background: #40b715 !important; /* Новый цвет при наведении */
-    color: white; /* Меняет цвет текста */
-  }
-  
-  .next-button:active {
-    transform: scale(0.95); /* Уменьшение кнопки при нажатии */
-    background: #2e8b10 !important; /* Темно-зеленый цвет при нажатии */
-    box-shadow: 
-      0 4px 16px rgba(0, 0, 0, 0.3), /* Уменьшенная тень при нажатии */
-      inset 0 4px 8px rgba(1, 56, 101, 0.719); /* Уменьшенная внутренняя тень */
-    transition: transform 0.05s ease; /* Ускоренный переход для эффекта нажатия */
-  }
 
+/* Применяем анимацию к карточке инструкции */
+.instruction-box {
+  position: absolute;
+  background: rgba(255, 0, 0, 0.286);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+  box-shadow: 
+    0 20px 32px rgba(208, 208, 208, 0.781),
+    inset 0 8px 16px rgba(0, 0, 0, 0.719);
+  border: 3px solid rgba(255, 255, 255, 0.579);
+  animation: float 3s ease-in-out infinite; /* Анимация плавания */
+}
+
+/* Применяем анимацию к кнопке */
+.next-button {
+  background: #61ed25;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+  box-shadow: 
+    0 8px 5px rgba(255, 255, 255, 0.604),
+    inset 0 8px 16px rgba(1, 56, 101, 0.719);
+  border: 2px solid rgba(255, 255, 255, 0.947);
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  animation: float 3s ease-in-out infinite; /* Анимация плавания */
+}
+
+.next-button:hover {
+  background: #40b715 !important;
+  color: white;
+}
+
+.next-button:active {
+  transform: scale(0.95);
+  background: #2e8b10 !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 4px 8px rgba(1, 56, 101, 0.719);
+  transition: transform 0.05s ease;
+}
 .instruction-description {
     font-size: 16px; /* Уменьшенный размер текста */
     font-weight: 550; /* Обычный (менее жирный) шрифт */

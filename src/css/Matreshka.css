@@ -58,6 +58,27 @@ body {
   top: -30px; /* Поднимаем матрешки */
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2)); /* Тень под матрешкой */
   z-index: 10; /* Чтобы матрешки были над блюром */
+  animation: appear 2s ease-out, pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .matryoshka-body img,
@@ -76,6 +97,7 @@ body {
   width: 100%;
   z-index: 10; /* Чтобы верхняя часть матрешки была над блюром */
 }
+
 
 .promo-ticket-overlay {
   position: fixed;

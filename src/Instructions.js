@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./css/instructions.css";
 import "./css/App.css";
+import SoundContext from './SoundContext';
 
 const instructionSteps = [
   {
@@ -8,7 +9,7 @@ const instructionSteps = [
     description: "Здесь отображается количество заработанных очков",
     highlight: { top: "15%", left: "65%", width: "100px", height: "110px" },
     boxImage: require("./assets/png/screen-footbal-goal.png"),
-    boxPosition: { top: "65%", left: "60%" },
+    boxPosition: { top: "50%", left: "45%" },
     boxSize: { width: "150px", height: "250px" },
   },
   {
@@ -16,15 +17,15 @@ const instructionSteps = [
     description: "Здесь отображаются варианты ответов",
     highlight: { top: "57%", left: "15%", width: "300px", height: "240px" },
     boxImage: require("./assets/png/screen-quistions.png"),
-    boxPosition: { top: "35%", left: "50%" },
-    boxSize: { width: "200px", height: "200px" },
+    boxPosition: { top: "20%", left: "35%" },
+    boxSize: { width: "200px", height: "180px" },
   },
   {
     text: "Секундомер",
     description: "Здесь отображается оставшееся время на ответ",
     highlight: { top: "48%", left: "67%", width: "90px", height: "45px" },
     boxImage: require("./assets/png/33.png"),
-    boxPosition: { top: "80%", left: "50%" },
+    boxPosition: { top: "63%", left: "10%" },
     boxSize: { width: "200px", height: "190px" },
   },
 ];
@@ -32,6 +33,8 @@ const instructionSteps = [
 const Instructions = ({ startGame }) => {
   const [step, setStep] = useState(0);
   const [clipPath, setClipPath] = useState("");
+
+  const { playButtonClickSound } = useContext(SoundContext);
 
   useEffect(() => {
     const { top, left, width, height } = instructionSteps[step].highlight;
@@ -45,6 +48,7 @@ const Instructions = ({ startGame }) => {
   }, [step]);
 
   const nextStep = () => {
+    playButtonClickSound();
     if (step < instructionSteps.length - 1) {
       setStep(step + 1);
     } else {
@@ -57,7 +61,7 @@ const Instructions = ({ startGame }) => {
       {/* Заголовок поверх всех элементов */}
       <h1 className="instruction-title">Игра Три Восьмёрки</h1>
 
-      <div className="instruction-overlay">
+      <div className="instruction-overlay" onClick={playButtonClickSound}>
         {/* Затемненный фон с вырезанным окном */}
         <div className="dark-overlay" style={{ clipPath }}></div>
 

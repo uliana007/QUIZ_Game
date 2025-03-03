@@ -5,6 +5,7 @@ import "./css/styles.css";
 import "./css/Result.css";
 import Matreshka from "./Matreshka";
 import Lose from "./Lose";
+import soundManager from './soundManager';
 
 const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
   const [showCoin, setShowCoin] = useState(false);
@@ -61,7 +62,7 @@ const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
         {showRestart && (
           <div className={`restart-button-container ${hasWon ? "restart-bottom" : "restart-center"}`}>
             <button className="restart-button" onClick={restartQuiz}>
-              Повторить
+              Идти за новым призом!
             </button>
           </div>
         )}

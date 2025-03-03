@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import WelcomeScreen from "./WelcomScreen";
+import React, { useState, useEffect, useContext } from "react";
+import WelcomeScreen from "./WelcomeScreen";
 import Result from "./Result";
 import Instructions from "./Instructions";
 import questions from "./data";
 import basketIcon from "./assets/png/football-goal.png";
+import SoundContext from './SoundContext';
 
 const Quiz = () => {
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -19,6 +20,8 @@ const Quiz = () => {
   const [correctStreak, setCorrectStreak] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [hasWon, setHasWon] = useState(false);
+
+  const { playButtonClickSound } = useContext(SoundContext);
 
   useEffect(() => {
     if (quizStarted) {
@@ -48,20 +51,23 @@ const Quiz = () => {
 
     return () => clearInterval(timer);
   }, [currentQuestionIndex, timerActive, answerStatus]);
+
   const handleAnswer = (answer) => {
     if (answerStatus !== null) return;
-  
+
+    playButtonClickSound();
+
     const isCorrect = answer === quizQuestions[currentQuestionIndex].correctAnswer;
     setSelectedAnswer(answer);
-    setAnswerStatus(isCorrect ? "correct" : "incorrect"); //выделение варианта ответа зеленым или
-  
+    setAnswerStatus(isCorrect ? "correct" : "incorrect");
+
     setTimeout(() => {
       document.querySelectorAll(".answer-button").forEach((btn) => btn.blur());
-  
+
       if (isCorrect) {
         setCorrectAnswers((prev) => prev + 1);
         setCorrectStreak((prev) => prev + 1);
-  
+
         if (correctStreak + 1 === 8) {
           setHasWon(true);
           setIsFinished(true);
@@ -75,17 +81,15 @@ const Quiz = () => {
       }
     }, 300);
   };
-  
 
   const handleNextQuestion = () => {
     setSelectedAnswer(null);
     setAnswerStatus(null);
-    
-    // Убираем фокус с кнопок после ответа
+
     setTimeout(() => {
       document.activeElement?.blur();
     }, 100);
-  
+
     if (currentQuestionIndex + 1 < quizQuestions.length) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setProgress(((currentQuestionIndex + 1) / quizQuestions.length) * 100);
@@ -94,18 +98,20 @@ const Quiz = () => {
       setTimerActive(false);
     }
   };
-  
 
   const startQuiz = () => {
+    playButtonClickSound();
     setShowInstructions(true);
   };
-  
+
   const startGame = () => {
+    playButtonClickSound();
     setShowInstructions(false);
     setQuizStarted(true);
   };
 
   const restartQuiz = () => {
+    playButtonClickSound();
     setIsFinished(false);
     setCurrentQuestionIndex(0);
     setProgress(0);
@@ -122,7 +128,6 @@ const Quiz = () => {
     setTimeLeft(8);
   };
 
-  // Если викторина ещё не началась, показываем главный экран
   if (!quizStarted && !showInstructions) {
     return <WelcomeScreen startQuiz={startQuiz} />;
   }
@@ -153,17 +158,17 @@ const Quiz = () => {
         </div>
 
         <div>
-  {quizQuestions[currentQuestionIndex].answers.map((answer, index) => (
-    <button
-      key={index}
-      className={`quiz-answer-button ${selectedAnswer === answer ? (answerStatus === "correct" ? "correct-answer" : "incorrect-answer") : ""}`}
-      onClick={() => handleAnswer(answer)}
-      disabled={selectedAnswer !== null}
-    >
-      {answer}
-    </button>
-  ))}
-</div>
+          {quizQuestions[currentQuestionIndex].answers.map((answer, index) => (
+            <button
+              key={index}
+              className={`quiz-answer-button ${selectedAnswer === answer ? (answerStatus === "correct" ? "correct-answer" : "incorrect-answer") : ""}`}
+              onClick={() => handleAnswer(answer)}
+              disabled={selectedAnswer !== null}
+            >
+              {answer}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="progress-bar">

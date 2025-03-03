@@ -1,0 +1,26 @@
+.blur-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 4em;
+    z-index: 9999;
+    cursor: pointer;
+  }
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0); /* Исходное положение */
+    }
+    50% {
+      transform: translateY(-20px); /* Увеличиваем амплитуду движения */
+    }
+  }
+  
+  .blur-screen {
+    animation: float 2s ease-in-out infinite; /* Уменьшаем длительность анимации */
+  }

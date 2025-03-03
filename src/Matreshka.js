@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PromoCodeTicket, { promoList } from "./PromoCodeTicket";
 import "./css/Matreshka.css";
 import matryoshkaBody from "./assets/png/matreshka-v2.png";
-import matryoshkaTop from "./assets/png/matryoshka-top-v2.png";
+import matryoshkaTop from "./assets/png/matreshka-top-v2.png";
+import SoundContext from './SoundContext';
 
 function Matreshka({ onPromoDisplayed }) {
   const [openedMatreshka, setOpenedMatreshka] = useState(null);
   const [promoCode, setPromoCode] = useState(null);
   const [isBlurred, setIsBlurred] = useState(false);
   const [usedPromoCodes, setUsedPromoCodes] = useState([]);
+  const { playButtonClickSound, playMatreshkaAppearSound } = useContext(SoundContext);
+
+  useEffect(() => {
+    playMatreshkaAppearSound();
+  }, [playMatreshkaAppearSound]);
 
   const handleMatreshkaClick = (id) => {
     if (openedMatreshka) return;
+
+    playButtonClickSound();
 
     const availablePromoCodes = promoList.filter(
       (promo) => !usedPromoCodes.includes(promo.code)
@@ -47,36 +55,46 @@ function Matreshka({ onPromoDisplayed }) {
         {[1, 2, 3].map((id) => (
           <motion.div
             key={id}
-            className={`matryoshka ${openedMatreshka ? "selected" : ""}`}
+            className={`matryoshka ${openedMatreshka === id ? "opened" : ""}`}
             onClick={() => handleMatreshkaClick(id)}
-            whileHover={{ scale: openedMatreshka ? 1 : 1.1 }}
+            whileHover={openedMatreshka === null ? { scale: 1.1 } : {}}
             whileTap={{ scale: 0.95 }}
             animate={{
-              scale: openedMatreshka === id ? 2 : 1,
-              y: openedMatreshka === id ? -150 : 0,
+              width: openedMatreshka === id ? 300 : 100,
+              height: openedMatreshka === id ? 300 : 200,
+              y: openedMatreshka === id ? -130 : 0, // Поднятие выше
+              zIndex: openedMatreshka === id ? 10 : 1, // Выделяем выбранную матрешку
             }}
-            transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.8 }}
+            transition={{ type: "spring", stiffness: 120, damping: 15, duration: 0.8 }}
           >
-            <div className="matryoshka-body">
+            <motion.div
+              className="matryoshka-body"
+              animate={{
+                y: openedMatreshka === id ? -190 : 0, // Поднятие матрешки выше
+              }}
+              transition={{ type: "spring", stiffness: 360, damping: 15, duration: 0.8 }}
+            >
               <motion.img
                 src={matryoshkaBody}
                 alt="Matryoshka"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 2 }}
               />
-            </div>
+            </motion.div>
             <motion.div
               className="matryoshka-top"
-              animate={{ y: openedMatreshka === id ? -50 : 0 }}
-              transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.8 }}
+              animate={{
+                y: openedMatreshka === id ? -350 : 0, // Поднятие крышки выше
+              }}
+              transition={{ type: "spring", stiffness: 350, damping: 15, duration: 0.8 }}
             >
               <motion.img
                 src={matryoshkaTop}
                 alt="Matryoshka Top"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 2 }}
               />
             </motion.div>
           </motion.div>

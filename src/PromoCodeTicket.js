@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./css/Matreshka.css";
+import SoundContext from './SoundContext';
 
 export const promoList = [
   { label: " Промокод -30% на Кинопоиск", code: "PROMO30" },
@@ -36,8 +37,10 @@ const PromoNotification = ({ message }) => {
 
 function PromoCodeTicket({ promoCode }) {
   const [notification, setNotification] = useState(null);
+  const { playButtonClickSound } = useContext(SoundContext);
 
   const copyToClipboard = () => {
+    playButtonClickSound();
     navigator.clipboard.writeText(promoCode.code).then(() => {
       setNotification("Промокод скопирован!");
       setTimeout(() => setNotification(null), 3000);

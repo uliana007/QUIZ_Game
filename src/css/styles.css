@@ -148,7 +148,19 @@ border: 1px solid rgba(255, 255, 255, 0.947); /* Лёгкая обводка д�
   margin: 15px 0;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
-  
+@keyframes gentle-bounce {
+  0%, 100% {
+    transform: translateY(0); /* Исходное положение */
+  }
+  50% {
+    transform: translateY(-10px); /* Ещё меньшее движение вверх */
+  }
+}
+
+.quiz-answer-button {
+  animation: gentle-bounce 3s ease-in-out infinite; /* Ещё более медленная анимация */
+}
+
   .correct-answer {
     background-color: #28a745!important;;
     box-shadow: 0 0 20px #28a745;
