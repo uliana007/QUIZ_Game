@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import basketIcon from "./assets/png/football-goal.png";
-import coinIcon from "./assets/png/icon-money.png";
+import coinIcon from "./assets/png/football-icon.png";
 import "./css/styles.css";
 import "./css/Result.css";
 import Matreshka from "./Matreshka";
+import Lose from "./Lose";
 
 const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
   const [showCoin, setShowCoin] = useState(false);
@@ -36,6 +37,10 @@ const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
     setShowRestart(true); // Показать кнопку после отображения промокода
   };
 
+  if (!hasWon) {
+    return <Lose restartQuiz={restartQuiz} />;
+  }
+
   return (
     <div className="quiz-container">
       <div className="coin-basket">
@@ -43,7 +48,7 @@ const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
         <div className="correct-answer-counter">{correctAnswers}</div>
       </div>
       <div className="quiz-card">
-        <h1 className="result-text">{hasWon ? "Вы выиграли!" : "Вы проиграли"}</h1>
+        <h3 className="result-title">{hasWon ? "Вы выиграли!" : "Вы проиграли"}</h3> {/* Заменили h1 на .result-title */}
 
         {hasWon && showCoin && (
           <div className={`coin-container ${animateCoin ? "animate" : ""} ${disappear ? "disappear" : ""}`}>
@@ -51,7 +56,7 @@ const Result = ({ hasWon, coins, setCoins, correctAnswers, restartQuiz }) => {
           </div>
         )}
 
-        {hasWon && showWheel && <Matreshka onPromoDisplayed={handlePromoDisplayed} />} 
+        {hasWon && showWheel && <Matreshka onPromoDisplayed={handlePromoDisplayed} />}
 
         {showRestart && (
           <div className={`restart-button-container ${hasWon ? "restart-bottom" : "restart-center"}`}>

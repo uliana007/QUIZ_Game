@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PromoCodeTicket, { promoList } from "./PromoCodeTicket";
 import "./css/Matreshka.css";
+import matryoshkaBody from "./assets/png/matreshka-v2.png";
+import matryoshkaTop from "./assets/png/matryoshka-top-v2.png";
 
 function Matreshka({ onPromoDisplayed }) {
   const [openedMatreshka, setOpenedMatreshka] = useState(null);
   const [promoCode, setPromoCode] = useState(null);
   const [isBlurred, setIsBlurred] = useState(false);
   const [usedPromoCodes, setUsedPromoCodes] = useState([]);
-  const [notification, setNotification] = useState(null); // Добавлено для уведомлений
 
   const handleMatreshkaClick = (id) => {
     if (openedMatreshka) return;
@@ -37,20 +38,11 @@ function Matreshka({ onPromoDisplayed }) {
     }, 1000);
   };
 
-  // Функция для обработки копирования промокода
-  const handleCopyPromoCode = () => {
-    if (promoCode) {
-      navigator.clipboard.writeText(promoCode.code);
-      setNotification("Промокод скопирован!");
-      setTimeout(() => setNotification(null), 3000);
-    }
-  };
-
   return (
     <div className="game-container">
       <div className={`background-overlay ${isBlurred ? "blurred" : ""}`}></div>
 
-      <h1>Выбери матрешку:</h1>
+      <h3 className="game-title">Выбери матрешку:</h3>
       <div className="matryoshkas">
         {[1, 2, 3].map((id) => (
           <motion.div
@@ -58,22 +50,34 @@ function Matreshka({ onPromoDisplayed }) {
             className={`matryoshka ${openedMatreshka ? "selected" : ""}`}
             onClick={() => handleMatreshkaClick(id)}
             whileHover={{ scale: openedMatreshka ? 1 : 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.95 }}
             animate={{
               scale: openedMatreshka === id ? 2 : 1,
               y: openedMatreshka === id ? -150 : 0,
             }}
-            transition={{ type: "spring", stiffness: 100 }}
+            transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.8 }}
           >
             <div className="matryoshka-body">
-              <img src={require("./assets/png/matreshka.png")} alt="Matryoshka" />
+              <motion.img
+                src={matryoshkaBody}
+                alt="Matryoshka"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              />
             </div>
             <motion.div
               className="matryoshka-top"
               animate={{ y: openedMatreshka === id ? -50 : 0 }}
-              transition={{ type: "spring", stiffness: 100 }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.8 }}
             >
-              <img src={require("./assets/png/matryoshka-top.png")} alt="Matryoshka Top" />
+              <motion.img
+                src={matryoshkaTop}
+                alt="Matryoshka Top"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              />
             </motion.div>
           </motion.div>
         ))}
@@ -93,21 +97,15 @@ function Matreshka({ onPromoDisplayed }) {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
-              transition={{ type: "spring", stiffness: 100 }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.8 }}
             >
-              <PromoCodeTicket promoCode={promoCode} onCopyPromoCode={handleCopyPromoCode} />
+              <PromoCodeTicket promoCode={promoCode} />
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      {notification && <Notification message={notification} />}
     </div>
   );
-}
-
-function Notification({ message }) {
-  return <div className="notification">{message}</div>;
 }
 
 export default Matreshka;

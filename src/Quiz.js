@@ -153,18 +153,17 @@ const Quiz = () => {
         </div>
 
         <div>
-          {quizQuestions[currentQuestionIndex].answers.map((answer, index) => (
-            <button
-              key={index}
-              className={`answer-button ${selectedAnswer === answer ? (answerStatus === "correct" ? "correct-answer" : "incorrect-answer") : ""}`}
-              onClick={() => 
-                handleAnswer(answer)}
-              disabled={selectedAnswer !== null}
-            >
-              {answer}
-            </button>
-          ))}
-        </div>
+  {quizQuestions[currentQuestionIndex].answers.map((answer, index) => (
+    <button
+      key={index}
+      className={`quiz-answer-button ${selectedAnswer === answer ? (answerStatus === "correct" ? "correct-answer" : "incorrect-answer") : ""}`}
+      onClick={() => handleAnswer(answer)}
+      disabled={selectedAnswer !== null}
+    >
+      {answer}
+    </button>
+  ))}
+</div>
       </div>
 
       <div className="progress-bar">

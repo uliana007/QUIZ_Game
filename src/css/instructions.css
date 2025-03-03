@@ -1,20 +1,33 @@
 
-  /* Заголовок квиза поверх всех элементов */
-.quiz-title {
-    position: fixed;
-    top: 0px;
-    left: 46%;
-    transform: translateX(-50%);
-    font-size: 1.8rem; /* Уменьшенный размер шрифта */
-    color: #00d1ff;
-    text-shadow: 0px 0px 10px #00d1ff, 0px 0px 20px #0077ff, 0px 0px 30px #00d1ff;
-    font-weight: bold;
-    pointer-events: none; /* Чтобы не мешало кликам */
-    white-space: nowrap; /* Запрещает перенос строки */
-    z-index: 2000 !important;
-    max-width: 90vw; /* Ограничение ширины */
-}
 
+.instruction-title {
+    position: fixed; /* Фиксированное позиционирование */
+    top: 20px; /* Отступ сверху */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Точное центрирование */
+    font-size: 4rem;
+    color: #00d1ff; /* Ярко-синий для футуристичности */
+    text-align: center;
+    letter-spacing: 5px;
+    text-shadow: 0px 0px 10px #00d1ff, 0px 0px 20px #0077ff, 0px 0px 30px #00d1ff;
+    animation: neon-glow 1.5s infinite alternate ease-in-out;
+    z-index: 2000; /* Высокий z-index для отображения поверх всех элементов */
+  }
+  
+  /* Адаптация для мобильных устройств */
+  @media (max-width: 768px) {
+    .instruction-title {
+      font-size: 2.5rem;
+      top: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .instruction-title {
+      font-size: 1.8rem;
+      top: 5px;
+    }
+  }
   
 .instruction-overlay {
     position: fixed;
@@ -33,7 +46,7 @@
 }
 
 .background-image{
-    filter: blur(20px);
+    filter: blur(30px);
 }
 .dark-overlay {
     position: fixed;
@@ -47,9 +60,9 @@
 
 .highlight-box {
     position: absolute;
-    border: 3px solid #ffcc00;
+    border: 3px solid #61ed25;
     border-radius: 10px;
-    box-shadow: 0 0 20px #ffcc00;
+    box-shadow: 0 0 30px #ffc800;
     transition: all 0.3s ease-in-out;
     background: transparent;
     z-index: 1002;
@@ -63,8 +76,11 @@
     text-align: center;
     font-size: 18px;
     font-weight: 900; /* Максимальная жирность */
+    box-shadow: 
+    0 20px 32px rgba(208, 208, 208, 0.781), /* Основная тень */
+    inset 0 8px 16px rgba(0, 0, 0, 0.719); /* Внутренняя тень для объёма */
+    border: 3px solid rgba(255, 255, 255, 0.579); /* Лёгкая обводка для объёма */
 }
-
 .next-button {
     background: #61ed25;
     color: black;
@@ -75,12 +91,26 @@
     border-radius: 5px;
     margin-top: 10px;
     font-weight: bold;
-}
-
-.next-button:hover {
+    box-shadow: 
+      0 8px 5px rgba(255, 255, 255, 0.604), /* Основная тень */
+      inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
+    border: 2px solid rgba(255, 255, 255, 0.947); /* Лёгкая обводка для объёма */
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease; /* Плавные переходы */
+  }
+  
+  .next-button:hover {
     background: #40b715 !important; /* Новый цвет при наведении */
     color: white; /* Меняет цвет текста */
-}
+  }
+  
+  .next-button:active {
+    transform: scale(0.95); /* Уменьшение кнопки при нажатии */
+    background: #2e8b10 !important; /* Темно-зеленый цвет при нажатии */
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.3), /* Уменьшенная тень при нажатии */
+      inset 0 4px 8px rgba(1, 56, 101, 0.719); /* Уменьшенная внутренняя тень */
+    transition: transform 0.05s ease; /* Ускоренный переход для эффекта нажатия */
+  }
 
 .instruction-description {
     font-size: 16px; /* Уменьшенный размер текста */

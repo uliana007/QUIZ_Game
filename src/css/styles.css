@@ -118,17 +118,6 @@ body {
 }
 
   
- /* Заголовок на главной странице */
-h1 {
-  font-size: 4rem;
-  color: #00d1ff; /* Ярко-синий для футуристичности */
-  text-align: center;
-  letter-spacing: 5px;
-  margin-top: 50px;
-  text-shadow: 0px 0px 10px #00d1ff, 0px 0px 20px #0077ff, 0px 0px 30px #00d1ff;
-  animation: neon-glow 1.5s infinite alternate ease-in-out;
-  z-index: 10 !important;
-}
 
 @keyframes neon-glow {
   0% {
@@ -139,34 +128,26 @@ h1 {
   }
 }
 
-button {
-  padding: 15px 30px;
-  background-color: #00d1ff;
+
+
+  
+/* Кнопки выбора ответа */
+.quiz-answer-button {
+  width: 300px;
+  height: 60px;
+  background-color: #434343;
+  box-shadow: 
+  0 6px 2px rgba(255, 255, 255, 0.604), /* Основная тень */
+  inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
+border: 1px solid rgba(255, 255, 255, 0.947); /* Лёгкая обводка для объёма */
+
   color: white;
-  border: none;
-  border-radius: 15px;
-  font-size: 1.5rem;
-  font-weight: 550; /* Максимальная жирность */
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  margin: 10px;
+  font-weight: 100; /* Меньшая жирность текста */
+  font-size: 18px;
+  border-radius: 10px;
+  margin: 15px 0;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
-
-  
-  /* Кнопки выбора ответа */
-  .answer-button {
-    width: 300px;
-    height: 60px;
-    background-color: #333333;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 10px;
-    margin: 15px 0;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
   
   .correct-answer {
     background-color: #28a745!important;;
@@ -234,14 +215,17 @@ button {
   /* Карточка с вопросом и вариантами ответов */
   .quiz-card {
     background-color: rgba(0, 0, 0, 0.7);  
+    box-shadow: 
+    0 10px 5px rgba(172, 172, 172, 0.36), /* Основная тень */
+    inset 0 8px 30px rgba(104, 165, 214, 0.693); /* Внутренняя тень для объёма */
+    border: 1px solid rgb(255, 255, 255); /* Лёгкая обводка для объёма */
     padding: 20px;  
-    border-radius: 15px;
+    border-radius: 18px;
     height: 450px;  
     width: 90%;
     max-width: 500px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    margin-top: 20px;
+    margin-top: 0px;
     position: relative;  /* Для позиционирования иконки монеты */
     display: flex;
     flex-direction: column;
@@ -430,25 +414,18 @@ button {
 
 /* Общие медиазапросы для мобильных устройств */
 @media (max-width: 768px) {
-  /* Изменяем размер шрифта заголовка для мобильных устройств */
-  h1 {
-    font-size: 2.5rem;
-    margin-top: 30px;
-  }
 
-  /* Уменьшаем размеры кнопок */
-  button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-  }
 
-  /* Уменьшаем размеры кнопок выбора ответа */
-  .answer-button {
-    width: 100%;
-    height: 50px;
-    font-size: 1rem;
-    margin: 8px 0;
-  }
+ /* Уменьшаем размеры кнопок выбора ответа */
+ .quiz-answer-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  width: 100%;
+  height: 50px;
+  margin: 8px 0;
+}
+
+
 /* Сдвигаем контейнер викторины вниз */
 .quiz-container {
   height: auto;
@@ -471,13 +448,6 @@ button {
     font-size: 1.5rem;
   }
 
-  /* Уменьшаем размеры кнопок выбора уровня */
-  .level-button {
-    width: 100%;
-    height: 50px;
-    font-size: 1.3rem;
-    margin: 10px 0;
-  }
 
   /* Уменьшаем размеры логотипа */
   .logo {
@@ -511,18 +481,15 @@ button {
 }
 
 @media (max-width: 480px) {
-  /* Уменьшаем шрифт и размеры элементов еще больше для мобильных телефонов */
-  h1 {
-    font-size: 1.8rem;
-    margin-top: 20px;
-  }
 
-  button {
+  /* Уменьшаем размеры кнопок выбора ответа */
+  .quiz-answer-button {
     padding: 8px 15px;
     font-size: 1rem;
+    height: 45px;
   }
 
-  .answer-button {
+  .quiz-answer-button {
     height: 45px;
     font-size: 0.9rem;
   }
@@ -537,12 +504,6 @@ button {
     font-size: 1.2rem;
   }
 
-  .level-button {
-    width: 100%;
-    height: 45px;
-    font-size: 1.2rem;
-    margin: 8px 0;
-  }
 
   .logo {
     width: 100px;

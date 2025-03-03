@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./css/instructions.css";
+import "./css/App.css";
+
 const instructionSteps = [
   {
     text: "Корзина",
@@ -52,12 +54,13 @@ const Instructions = ({ startGame }) => {
 
   return (
     <>
-      <h1 className="quiz-title">Игра Три Восьмёрки</h1>
+      {/* Заголовок поверх всех элементов */}
+      <h1 className="instruction-title">Игра Три Восьмёрки</h1>
+
       <div className="instruction-overlay">
-  
         {/* Затемненный фон с вырезанным окном */}
         <div className="dark-overlay" style={{ clipPath }}></div>
-  
+
         {/* Подсвеченная область с изображением */}
         <div
           className="highlight-box"
@@ -69,30 +72,28 @@ const Instructions = ({ startGame }) => {
             backgroundPosition: "center",
           }}
         ></div>
-      
 
-      {/* Текстовое описание */}
-      <div
-        className="instruction-box"
-        style={{
-          top: instructionSteps[step].boxPosition.top,
-          left: instructionSteps[step].boxPosition.left,
-          width: instructionSteps[step].boxSize.width,
-          height: instructionSteps[step].boxSize.height,
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        <p>{instructionSteps[step].text}</p>
-        <p className="instruction-description">{instructionSteps[step].description}</p>
+        {/* Текстовое описание */}
+        <div
+          className="instruction-box"
+          style={{
+            top: instructionSteps[step].boxPosition.top,
+            left: instructionSteps[step].boxPosition.left,
+            width: instructionSteps[step].boxSize.width,
+            height: instructionSteps[step].boxSize.height,
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <p>{instructionSteps[step].text}</p>
+          <p className="instruction-description">{instructionSteps[step].description}</p>
 
-        <button className="next-button" onClick={nextStep}>
-          {step < instructionSteps.length - 1 ? "Далее" : "Начать игру"}
-        </button>
+          <button className="next-button" onClick={nextStep}>
+            {step < instructionSteps.length - 1 ? "Далее" : "Начать игру"}
+          </button>
+        </div>
       </div>
-    </div>
     </>
   );
 };
 
 export default Instructions;
-

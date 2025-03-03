@@ -1,42 +1,80 @@
+/* Стили для заголовка результата */
+.result-title {
+  margin-top: 50px; /* Отступ сверху */
+  font-size: 26px; /* Размер шрифта */
+  color: #ffffff; /* Белый цвет текста */
+  text-align: center; /* Центрирование текста */
+  background: rgba(51, 66, 161, 0.684); /* Полупрозрачный фон */
+  box-shadow: 
+    inset 0 6px 16px rgba(223, 223, 223, 0.477); /* Внутренняя тень для объёма */
+    border: 1px solid rgb(242, 242, 242); /* Лёгкая обводка для объёма */
+  padding: 10px 20px; /* Отступы внутри */
+  border-radius: 18px; /* Закругленные края */
+  display: inline-block; /* Чтобы контейнер подстроился под размер текста */
+}
+
+/* Стили для заголовка при проигрыше */
+.result-title.lose {
+  margin-top: 100px; /* Увеличенный отступ сверху */
+}
 
 /* Кнопка "Повторить" - базовые стили */
 .restart-button-container {
-    position: absolute ;
-    left: 50% ;
-    transform: translateX(-50%) ;
-    width: 100% ;
-    display: flex ;
-    justify-content: center;
-    z-index: 20;
-}
-
-/* Кнопка "Повторить" при выигрыше (опущена на 20px вниз) */
-.restart-button-container.restart-bottom {
-    bottom: -2px ;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+  bottom: 20px; /* Поднимаем кнопку на 20px */
 }
 
 /* Кнопка "Повторить" при проигрыше (поднята на 40px) */
 .restart-button-container.restart-center {
-    bottom: 150px;
+  bottom: 40px; /* Поднимаем кнопку на 40px */
 }
 
-/* Заголовок "Вы проиграли" (опущен на 50px) */
-.result-text.lose {
-    margin-top: 100px;
+/* Стили для кнопки "Повторить" */
+.restart-button {
+  width: 300px;
+  height: 60px;
+  background-color: #434343;
+  box-shadow: 
+  0 6px 2px rgba(255, 255, 255, 0.604), /* Основная тень */
+  inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
+border: 1px solid rgba(255, 255, 255, 0.947); /* Лёгкая обводка для объёма */
+
+  color: white;
+  font-weight: 100; /* Меньшая жирность текста */
+  font-size: 18px;
+  border-radius: 10px;
+  margin: 15px 0;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
 }
 
-
-  .restart-button {
-    background-color: #08b4db;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
   }
+  50% {
+    transform: scale(1.05); /* Увеличение при пульсации */
+  }
+}
+
+.restart-button:hover {
+  background-color: #2d487758; /* Более светлый синий при наведении */
   
-  .restart-button:hover {
-    background-color: #0195b6;
-    transform: scale(1.1);
-  }
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3), /* Усиление тени */
+  inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
+
+}
+
+.restart-button:active {
+  animation: none; /* Отключаем анимацию при нажатии */
+  transform: scale(0.95); /* Сильное уменьшение при нажатии */
+  background-color: #142b61; /* Темно-синий цвет при нажатии */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Уменьшение тени при нажатии */
+  transition: transform 0.05s ease; /* Ускоренный переход для эффекта нажатия */
+}

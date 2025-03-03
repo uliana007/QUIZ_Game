@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./css/Matreshka.css";
 
-// База данных промокодов
 export const promoList = [
   { label: " Промокод -30% на Кинопоиск", code: "PROMO30" },
   { label: "📺 Подписка RuTube", code: "RUTUBE1M" },
@@ -17,32 +16,34 @@ export const promoList = [
   { label: "Промокод -25% на Кинопоиск", code: "PROMO25" },
 ];
 
-const Notification = ({ message }) => {
+const PromoNotification = ({ message }) => {
   return (
     <AnimatePresence>
-      <motion.div
-        className="notification"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.3 }}
-      >
-        {message}
-      </motion.div>
+      {message && (
+        <motion.div
+          className="promo-notification"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3 }}
+        >
+          {message}
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 };
 
-
-// Компонент для отображения промокода
 function PromoCodeTicket({ promoCode }) {
   const [notification, setNotification] = useState(null);
 
-  // Функция для копирования промокода
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(promoCode.code);
-    setNotification("Промокод скопирован!");
-    setTimeout(() => setNotification(null), 3000);
+    navigator.clipboard.writeText(promoCode.code).then(() => {
+      setNotification("Промокод скопирован!");
+      setTimeout(() => setNotification(null), 3000);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
   };
 
   return (
@@ -53,23 +54,23 @@ function PromoCodeTicket({ promoCode }) {
       exit={{ opacity: 0, y: 50 }}
       transition={{ duration: 0.5 }}
     >
- <div className="promo-ticket bg-white p-4 rounded-lg shadow-md">
-  <motion.p className="font-bold text-lg">
-    {promoCode ? promoCode.label : ""}
-  </motion.p>
-  <motion.p className="text-gray-700 mt-2">
-    ВАШ ПРОМОКОД: <strong>{promoCode ? promoCode.code : ""}</strong>
-  </motion.p>
-  <motion.button
-    onClick={copyToClipboard}
-    className="copy-button" // Применяем стили из CSS
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    📋 Скопировать
-  </motion.button>
-</div>
-{notification && <Notification message={notification} />}
+      <div className="promo-ticket bg-white p-4 rounded-lg shadow-md">
+        <motion.p className="font-bold text-lg">
+          {promoCode ? promoCode.label : ""}
+        </motion.p>
+        <motion.p className="text-gray-700 mt-2">
+          ВАШ ПРОМОКОД: <strong>{promoCode ? promoCode.code : ""}</strong>
+        </motion.p>
+        <motion.button
+          onClick={copyToClipboard}
+          className="copy-button"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          📋 Скопировать
+        </motion.button>
+      </div>
+      {notification && <PromoNotification message={notification} />}
     </motion.div>
   );
 }

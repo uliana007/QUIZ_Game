@@ -52,7 +52,10 @@ body {
   width: 90%; /* Уменьшаем ширину карточки */
   max-width: 400px; /* Ограничиваем максимальную ширину */
   margin: 0 auto; /* Центрируем карточку */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Усиление тени */
+  box-shadow: 
+    0 8px 32px rgba(14, 14, 145, 0.67), /* Основная тень */
+    inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
+    border: 1px solid rgba(0, 0, 0, 0.584); /* Лёгкая обводка для объёма */
   margin-top: -2vh; /* Используем vh для отступов */
 }
 
@@ -62,7 +65,6 @@ body {
   margin-bottom: 15px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Тень для текста */
 }
-
 .rules {
   display: flex;
   flex-direction: column;
@@ -76,7 +78,10 @@ body {
   background-color: #ffffff; /* Белый фон для каждого правила */
   border-radius: 12px; /* Увеличиваем скругление углов */
   padding: 10px; /* Уменьшаем отступы для мобильных устройств */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Более выраженная тень */
+  box-shadow: 
+    0 7px 5px rgba(14, 14, 145, 0.67), /* Основная тень */
+    inset 0 6px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
+    border: 1px solid rgba(0, 0, 0, 0.512); /* Лёгкая обводка для объёма */
   transform: scale(1);
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Анимация при наведении */
 }
@@ -86,16 +91,35 @@ body {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Усиление тени */
 }
 
-.rule span {
-  font-size: clamp(16px, 4vw, 20px); /* Гибкий размер шрифта */
-  color: #1e3c72; /* Темно-синий цвет для эмодзи */
+.rule .emoji {
+  font-size: clamp(18px, 4vw, 20px); /* Гибкий размер шрифта */
+  box-shadow:
+  0 5px 5px rgba(100, 100, 139, 0.67), /* Основная тень */
+  inset 0 6px 16px rgba(16, 137, 198, 0.853); /* Внутренняя тень для объёма */
+  border-radius: 8px;
 }
 
-.rule p {
+.rule-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.rule-title {
   font-size: clamp(12px, 3vw, 14px); /* Гибкий размер шрифта */
-  color: #000000; /* Темно-серый цвет для текста */
+  color: #002d77; /* Темно-серый цвет для текста */
   margin: 0;
   font-weight: 550; /* Делаем шрифт более толстым */
+  text-align: left;
+}
+
+.rule-description {
+  margin-top: 5px;
+  font-size: clamp(10px, 2.5vw, 12px); /* Гибкий размер шрифта */
+  color: #000000; /* Темно-серый цвет для текста */
+  font-weight: 500; /* Делаем шрифт более толстым */
+  text-align: left;
 }
 
 .start-button {
@@ -128,9 +152,11 @@ body {
 }
 
 .start-button:active {
-  transform: scale(0.8); /* Увеличенный эффект нажатия */
+  animation: none; /* Отключаем анимацию при нажатии */
+  transform: scale(0.95); /* Сильное уменьшение при нажатии */
   background-color: #142b61; /* Темно-синий цвет при нажатии */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Уменьшение тени при нажатии */
+  transition: transform 0.05s ease; /* Ускоренный переход для эффекта нажатия */
 }
 
 /* Адаптация для мобильных устройств */
