@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/QUIZ_Game/static/css/main.1187be81.css",
-    "main.js": "/QUIZ_Game/static/js/main.ae27c1e6.js",
-    "static/media/matryoshka-top-v2.png": "/QUIZ_Game/static/media/matryoshka-top-v2.da27da29929a322f58bf.png",
+    "main.css": "/QUIZ_Game/static/css/main.cfc1eea0.css",
+    "main.js": "/QUIZ_Game/static/js/main.567cf058.js",
+    "static/media/Øneheart, reidenshi — distorted memories.mp3": "/QUIZ_Game/static/media/Øneheart, reidenshi — distorted memories.b3fda8618890eddfda73.mp3",
+    "static/media/matreshka-top-v2.png": "/QUIZ_Game/static/media/matreshka-top-v2.da27da29929a322f58bf.png",
     "static/media/sad-football.png": "/QUIZ_Game/static/media/sad-football.078af36f1b3c387f2a87.png",
     "static/media/index-screen4.png": "/QUIZ_Game/static/media/index-screen4.97ff04b532ead1babad7.png",
     "static/media/5_Some_Times_Later-v2.otf": "/QUIZ_Game/static/media/5_Some_Times_Later-v2.a2ecf35c14e90b192dff.otf",
@@ -15,14 +16,17 @@
     "static/media/football-icon.png": "/QUIZ_Game/static/media/football-icon.3c1f6c59283250b5c4d8.png",
     "static/media/Monocraft.otf": "/QUIZ_Game/static/media/Monocraft.9034fdcafc181f3307a1.otf",
     "static/media/minecraft-ten-font-cyrillic.ttf": "/QUIZ_Game/static/media/minecraft-ten-font-cyrillic.941842d11255509fb0f6.ttf",
+    "static/media/button.mp3": "/QUIZ_Game/static/media/button.dfcb71fdf0ed25cfbd61.mp3",
+    "static/media/lose.mp3": "/QUIZ_Game/static/media/lose.6a6047196af21c6c0eb6.mp3",
     "static/media/1_Sponge_Bob_Ru_Uk_En_by_Ruslan_Chuchko-v2.otf": "/QUIZ_Game/static/media/1_Sponge_Bob_Ru_Uk_En_by_Ruslan_Chuchko-v2.5f2fd04c8128d22d0b59.otf",
+    "static/media/happy-bonus.mp3": "/QUIZ_Game/static/media/happy-bonus.22cede82771d375b227f.mp3",
     "static/media/logo.png": "/QUIZ_Game/static/media/logo.498a0312aa07892e31bc.png",
     "index.html": "/QUIZ_Game/index.html",
-    "main.1187be81.css.map": "/QUIZ_Game/static/css/main.1187be81.css.map",
-    "main.ae27c1e6.js.map": "/QUIZ_Game/static/js/main.ae27c1e6.js.map"
+    "main.cfc1eea0.css.map": "/QUIZ_Game/static/css/main.cfc1eea0.css.map",
+    "main.567cf058.js.map": "/QUIZ_Game/static/js/main.567cf058.js.map"
   },
   "entrypoints": [
-    "static/css/main.1187be81.css",
-    "static/js/main.ae27c1e6.js"
+    "static/css/main.cfc1eea0.css",
+    "static/js/main.567cf058.js"
   ]
 }
