@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/QUIZ_Game/static/css/main.073c6b68.css",
+    "main.css": "/QUIZ_Game/static/css/main.6f129630.css",
     "main.js": "/QUIZ_Game/static/js/main.14dda946.js",
     "static/media/background-music.mp3": "/QUIZ_Game/static/media/background-music.a7e02b5c6ccafb758125.mp3",
     "static/media/matreshka-top-v2.png": "/QUIZ_Game/static/media/matreshka-top-v2.da27da29929a322f58bf.png",
@@ -22,11 +22,11 @@
     "static/media/logo.png": "/QUIZ_Game/static/media/logo.498a0312aa07892e31bc.png",
     "static/media/click-v2.mp3": "/QUIZ_Game/static/media/click-v2.e09f00c73ea83799b3c7.mp3",
     "index.html": "/QUIZ_Game/index.html",
-    "main.073c6b68.css.map": "/QUIZ_Game/static/css/main.073c6b68.css.map",
+    "main.6f129630.css.map": "/QUIZ_Game/static/css/main.6f129630.css.map",
     "main.14dda946.js.map": "/QUIZ_Game/static/js/main.14dda946.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c6b68.css",
+    "static/css/main.6f129630.css",
     "static/js/main.14dda946.js"
   ]
 }
