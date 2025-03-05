@@ -55,7 +55,7 @@
   .restart-button {
     width: 300px;
     height: 60px;
-    background-color: #434343;
+    background-color: rgb(1, 56, 101);
     box-shadow: 
     0 6px 2px rgba(255, 255, 255, 0.604), /* Основная тень */
     inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */

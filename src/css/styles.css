@@ -111,43 +111,36 @@ body {
 
 /* Основной контент (карточки, логотип, текст) */
 
-
+/* Основной контент (карточки, логотип, текст) */
 .quiz-container {
   position: relative;
   z-index: 1; /* Поверх фонового изображения */
 }
 
-  
-
-@keyframes neon-glow {
-  0% {
-    text-shadow: 0px 0px 10px #00d1ff, 0px 0px 20px #0077ff, 0px 0px 30px #00d1ff;
-  }
-  100% {
-    text-shadow: 0px 0px 15px #00ffff, 0px 0px 25px #00aaff, 0px 0px 40px #00ffff;
-  }
-}
-
-
-
-  
 /* Кнопки выбора ответа */
 .quiz-answer-button {
   width: 300px;
   height: 60px;
   background-color: #434343;
   box-shadow: 
-  0 6px 2px rgba(255, 255, 255, 0.604), /* Основная тень */
-  inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
-border: 1px solid rgba(255, 255, 255, 0.947); /* Лёгкая обводка для объёма */
-
+    0 6px 2px rgba(255, 255, 255, 0.604), /* Основная тень */
+    inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
+  border: 1px solid rgba(255, 255, 255, 0.947); /* Лёгкая обводка для объёма */
   color: white;
   font-weight: 100; /* Меньшая жирность текста */
   font-size: 18px;
   border-radius: 10px;
-  margin: 15px 0;
+  margin: 10px 0; /* Интервал между кнопками */
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+.answers-container {
+  display: flex;
+  flex-direction: column; /* Расположение кнопок по вертикали */
+  align-items: center; /* Центрирование кнопок */
+  gap: 15px; /* Расстояние между кнопками */
+}
+
 @keyframes gentle-bounce {
   0%, 100% {
     transform: translateY(0); /* Исходное положение */
@@ -161,19 +154,17 @@ border: 1px solid rgba(255, 255, 255, 0.947); /* Лёгкая обводка д�
   animation: gentle-bounce 3s ease-in-out infinite; /* Ещё более медленная анимация */
 }
 
-  .correct-answer {
-    background-color: #28a745!important;;
-    box-shadow: 0 0 20px #28a745;
-    transition: box-shadow 0.3s ease-in-out;
-    
+.correct-answer {
+  background-color: #28a745!important;
+  box-shadow: 0 0 20px #28a745;
+  transition: box-shadow 0.3s ease-in-out;
+}
 
-  }
-  
-  .incorrect-answer {
-    background-color: #dc3545!important;;
-    box-shadow: 0 0 20px #dc3545;
-    transition: box-shadow 0.3s ease-in-out;
-  }
+.incorrect-answer {
+  background-color: #dc3545!important;
+  box-shadow: 0 0 20px #dc3545;
+  transition: box-shadow 0.3s ease-in-out;
+}
   
   /* Полоса прогресса */
   .progress-bar {

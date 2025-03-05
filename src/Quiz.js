@@ -77,6 +77,7 @@ const Quiz = () => {
         }
       } else {
         setCorrectStreak(0);
+        setCorrectAnswers(0);  // Сбросить счетчик правильных ответов при ошибке
         handleNextQuestion();
       }
     }, 300);
@@ -157,7 +158,7 @@ const Quiz = () => {
           Осталось времени: {timeLeft} сек
         </div>
 
-        <div>
+        <div className="answers-container">
           {quizQuestions[currentQuestionIndex].answers.map((answer, index) => (
             <button
               key={index}
