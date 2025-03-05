@@ -10,7 +10,6 @@ body {
   box-sizing: border-box;
 }
 
-
 .welcome-card {
   background-color: #dcf2ff; /* Белый фон карточки */
   border-radius: 25px; /* Увеличиваем скругление углов */
@@ -55,7 +54,7 @@ body {
   box-shadow: 
     0 8px 32px rgba(14, 14, 145, 0.67), /* Основная тень */
     inset 0 8px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
-    border: 1px solid rgba(0, 0, 0, 0.584); /* Лёгкая обводка для объёма */
+  border: 1px solid rgba(0, 0, 0, 0.584); /* Лёгкая обводка для объёма */
   margin-top: -2vh; /* Используем vh для отступов */
 }
 
@@ -65,6 +64,7 @@ body {
   margin-bottom: 15px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Тень для текста */
 }
+
 .rules {
   display: flex;
   flex-direction: column;
@@ -81,7 +81,7 @@ body {
   box-shadow: 
     0 7px 5px rgba(14, 14, 145, 0.67), /* Основная тень */
     inset 0 6px 16px rgba(1, 56, 101, 0.719); /* Внутренняя тень для объёма */
-    border: 1px solid rgba(0, 0, 0, 0.512); /* Лёгкая обводка для объёма */
+  border: 1px solid rgba(0, 0, 0, 0.512); /* Лёгкая обводка для объёма */
   transform: scale(1);
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Анимация при наведении */
 }
@@ -94,8 +94,8 @@ body {
 .rule .emoji {
   font-size: clamp(18px, 4vw, 20px); /* Гибкий размер шрифта */
   box-shadow:
-  0 5px 5px rgba(100, 100, 139, 0.67), /* Основная тень */
-  inset 0 6px 16px rgba(16, 137, 198, 0.853); /* Внутренняя тень для объёма */
+    0 5px 5px rgba(100, 100, 139, 0.67), /* Основная тень */
+    inset 0 6px 16px rgba(16, 137, 198, 0.853); /* Внутренняя тень для объёма */
   border-radius: 8px;
 }
 
@@ -159,31 +159,70 @@ body {
   transition: transform 0.05s ease; /* Ускоренный переход для эффекта нажатия */
 }
 
-/* Адаптация для мобильных устройств */
-@media (max-width: 480px) {
+/* Адаптация для планшетов (360x780, 375x812) */
+@media (max-width: 780px) and (orientation: portrait) {
   .welcome-card {
-    min-height: auto; /* Убираем фиксированную высоту */
-    padding: 10px; /* Уменьшаем внутренние отступы */
-  }
-
-  .start-button {
-    margin-top: 10px; /* Уменьшаем отступ для кнопки */
-  }
-}
-
-/* Адаптация для разрешения 360x780 */
-@media (max-width: 360px) {
-  .welcome-card {
-    margin-top: -3vh; /* Уменьшаем отступ */
-    margin-top: -7vh; /* Перемещение карточки выше */
+    width: 90%;
+    padding: 20px;
+    min-height: 40vh; /* Уменьшаем высоту */
   }
 
   .instructions-card {
-    padding: 10px; /* Уменьшаем отступы */
+    width: 100%;
+    max-width: none;
+    padding: 10px;
+  }
+
+  .rule {
+    padding: 8px;
   }
 
   .start-button {
-    padding: 8px 16px; /* Уменьшаем отступы для кнопки */
+    padding: 8px 16px;
   }
 }
 
+@media (max-width: 812px) and (orientation: portrait) {
+  .welcome-card {
+    width: 90%;
+    padding: 20px;
+    min-height: 40vh; /* Уменьшаем высоту */
+  }
+
+  .instructions-card {
+    width: 100%;
+    max-width: none;
+    padding: 10px;
+  }
+
+  .rule {
+    padding: 8px;
+  }
+
+  .start-button {
+    padding: 8px 16px;
+  }
+}
+
+/* Адаптация для Telegram Mini App на ПК */
+@media (max-width: 1150px) and (max-height: 860px) {
+  .welcome-card {
+    width: 90%;
+    padding: 15px;
+    min-height: 35vh; /* Еще меньше высота */
+  }
+
+  .instructions-card {
+    width: 100%;
+    max-width: none;
+    padding: 8px;
+  }
+
+  .rule {
+    padding: 6px;
+  }
+
+  .start-button {
+    padding: 6px 12px;
+  }
+}
