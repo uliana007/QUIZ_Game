@@ -1,8 +1,8 @@
 class SoundManager {
   constructor() {
-    this.backgroundMusic = new Audio(require('./assets/sounds/background-music.mp3'));
+    this.backgroundMusic = new Audio(require('./assets/sounds/fon_music.mp3'));
     this.backgroundMusic.loop = true;
-    this.backgroundMusic.volume = 0.05; // Установите громкость по вашему усмотрению
+    this.backgroundMusic.volume = 1; // Установите громкость по вашему усмотрению
 
     this.buttonClickSound = new Audio(require('./assets/sounds/click-v2.mp3'));
     this.buttonClickSound.volume = 1; // Установите громкость по вашему усмотрению

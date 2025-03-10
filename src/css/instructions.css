@@ -6,13 +6,20 @@
     left: 50%; /* Центрирование по горизонтали */
     transform: translateX(-50%); /* Точное центрирование */
     font-size: 4rem;
-    color: #00d1ff; /* Ярко-синий для футуристичности */
+    color: #000000; 
+    text-shadow: 
+    0px 0px 10px rgba(0, 209, 255, 0.8), 
+    0px 0px 20px rgba(0, 119, 255, 0.6),
+    -2px -2px 0 #00d1ff,  
+    2px -2px 0 #00d1ff,
+    -2px 2px 0 #00d1ff,
+    2px 2px 0 #00d1ff; /* Градиентная обводка */
+    background: transparent;
     text-align: center;
     letter-spacing: 5px;
-    text-shadow: 0px 0px 10px #00d1ff, 0px 0px 20px #0077ff, 0px 0px 30px #00d1ff;
-    animation: neon-glow 1.5s infinite alternate ease-in-out;
     z-index: 2000; /* Высокий z-index для отображения поверх всех элементов */
   }
+  
   
   /* Адаптация для мобильных устройств */
   @media (max-width: 768px) {
