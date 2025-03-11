@@ -26,3 +26,5 @@ git commit -m "Ваше сообщение о изменениях"
 bash
 Copy
 git push origin main
+
+чтобы задеплоидить: ?npm run deploy?

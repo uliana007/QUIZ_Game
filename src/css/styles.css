@@ -335,7 +335,20 @@ body {
     margin-left: 10px;
 }
 
+/* Стили для планшетной версии */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .coin-basket {
+      top: -10px; /* Поднимаем на 20px выше (10px - 20px = -10px) */
+  }
 
+  .basket-icon {
+      margin-top: -20px; /* Поднимаем изображение на 20px выше */
+  }
+
+  .correct-answer-counter {
+      top: -15px; /* Поднимаем на 20px выше (5px - 20px = -15px) */
+  }
+}
 
 
 @keyframes coin-fly {
