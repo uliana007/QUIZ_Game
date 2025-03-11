@@ -335,21 +335,20 @@ body {
     margin-left: 10px;
 }
 
-/* Стили для планшетной версии */
-@media (min-width: 768px) and (max-width: 1024px) {
+/* Стили для планшетной версии (594x794) */
+@media (max-width: 594px) and (max-height: 794px) {
   .coin-basket {
-      top: -10px; /* Поднимаем на 20px выше (10px - 20px = -10px) */
+      top: -10px; /* Поднимаем на 20px вверх (было 10px, стало -10px) */
   }
 
   .basket-icon {
-      margin-top: -20px; /* Поднимаем изображение на 20px выше */
+      margin-top: -20px; /* Поднимаем изображение еще на 10px вверх */
   }
 
   .correct-answer-counter {
-      top: -15px; /* Поднимаем на 20px выше (5px - 20px = -15px) */
+      top: -15px; /* Поднимаем на 20px вверх (было 5px, стало -15px) */
   }
 }
-
 
 @keyframes coin-fly {
     0% {
