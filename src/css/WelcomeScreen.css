@@ -19,7 +19,7 @@ body {
   padding: 5%; /* Используем проценты для отступов */
   min-height: 50vh; /* Используем vh для высоты */
   text-align: center; /* Центрируем содержимое по горизонтали */
-  margin-top: -7vh; /* Перемещение карточки выше */
+  margin-top: -0vh; /* Перемещение карточки выше */
   animation: float 3s ease-in-out infinite; /* Анимация плавающего эффекта */
   border: 1px solid rgb(255, 255, 255); /* Лёгкая обводка для объёма */
   display: flex;

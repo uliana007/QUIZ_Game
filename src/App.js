@@ -30,9 +30,9 @@ function App() {
             <div className="overlay-bg">
             </div>
             <h1>Игра Три Восьмёрки</h1>
-            <div className="logo-container">
+            {/* <div className="logo-container">
               <img src={logoIcon} alt="Logo" className="logo" />
-            </div>
+            </div> */}
             <Quiz />
           </>
         )}
