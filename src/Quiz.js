@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import WelcomeScreen from "./WelcomeScreen";
 import Result from "./Result";
 import Instructions from "./Instructions";
-import questions from "./data";
 import basketIcon from "./assets/png/football-goal.png";
 import SoundContext from './SoundContext';
+import { loadQuestions } from './db_config/firebaseConfig';
 
 const Quiz = () => {
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -25,13 +25,17 @@ const Quiz = () => {
 
   useEffect(() => {
     if (quizStarted) {
-      const shuffled = questions.sort(() => 0.5 - Math.random()).slice(0, 30);
-      setQuizQuestions(shuffled);
-      setCurrentQuestionIndex(0);
-      setTimeLeft(8);
-      setTimerActive(true);
-      setCorrectStreak(0);
-      setCorrectAnswers(0);
+      const fetchQuestions = async () => {
+        const fetchedQuestions = await loadQuestions();
+        const shuffled = fetchedQuestions.sort(() => 0.5 - Math.random()).slice(0, 30);
+        setQuizQuestions(shuffled);
+        setCurrentQuestionIndex(0);
+        setTimeLeft(8);
+        setTimerActive(true);
+        setCorrectStreak(0);
+        setCorrectAnswers(0);
+      };
+      fetchQuestions();
     }
   }, [quizStarted]);
 
@@ -124,9 +128,13 @@ const Quiz = () => {
     setQuizStarted(true);
     setTimerActive(true);
 
-    const shuffled = questions.sort(() => 0.5 - Math.random()).slice(0, 30);
-    setQuizQuestions(shuffled);
-    setTimeLeft(8);
+    const fetchQuestions = async () => {
+      const fetchedQuestions = await loadQuestions();
+      const shuffled = fetchedQuestions.sort(() => 0.5 - Math.random()).slice(0, 30);
+      setQuizQuestions(shuffled);
+      setTimeLeft(8);
+    };
+    fetchQuestions();
   };
 
   if (!quizStarted && !showInstructions) {

@@ -28,3 +28,31 @@ Copy
 git push origin main
 
 чтобы задеплоидить: ?npm run deploy?
+
+
+
+
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Временно разрешить чтение и запись для всех пользователей
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+
+Важно
+После завершения миграции данных, не забудьте вернуть правила безопасности к более строгим настройкам, чтобы защитить вашу базу данных от неавторизованного доступа. Пример обновленных правил безопасности:
+
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Разрешить чтение и запись только аутентифицированным пользователям
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

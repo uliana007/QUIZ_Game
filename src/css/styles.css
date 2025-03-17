@@ -296,7 +296,7 @@ body {
 
   .correct-answer-counter {
     position: absolute;
-    top: -5px;  /* Подкорректируй по необходимости */
+    top: -5px !important;  /* Подкорректируй по необходимости */
     left: 18px; /* Подкорректируй по необходимости */
     background-color: #ffcc0000;
     color: #ffffff;
