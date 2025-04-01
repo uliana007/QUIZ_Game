@@ -12,13 +12,12 @@ const firebaseConfig = {
   measurementId: "G-M2FXDHE7EC"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
 const loadQuestions = async () => {
-  const questionsCol = collection(db, "questions");
+  const questionsCol = collection(db, "questions-hard");
   const questionSnapshot = await getDocs(questionsCol);
   const questionList = questionSnapshot.docs.map((doc) => doc.data());
   return questionList;

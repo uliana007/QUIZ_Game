@@ -4,7 +4,8 @@ import Result from "./Result";
 import Instructions from "./Instructions";
 import basketIcon from "./assets/png/football-goal.png";
 import SoundContext from './SoundContext';
-import { loadQuestions } from './db_config/firebaseConfig';
+import { loadQuestions as loadEasyQuestions } from './db_config/firebaseConfig';
+import { loadQuestions as loadHardQuestions } from './questions-hard/firebaseConfig';
 
 const Quiz = () => {
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -26,9 +27,19 @@ const Quiz = () => {
   useEffect(() => {
     if (quizStarted) {
       const fetchQuestions = async () => {
-        const fetchedQuestions = await loadQuestions();
-        const shuffled = fetchedQuestions.sort(() => 0.5 - Math.random()).slice(0, 30);
-        setQuizQuestions(shuffled);
+        const easyQuestions = await loadEasyQuestions();
+        const hardQuestions = await loadHardQuestions();
+
+        let quizQuestions = [];
+        for (let i = 0; i < 30; i++) {
+          if ((i + 1) % 8 === 0) {
+            quizQuestions.push(hardQuestions[Math.floor(Math.random() * hardQuestions.length)]);
+          } else {
+            quizQuestions.push(easyQuestions[Math.floor(Math.random() * easyQuestions.length)]);
+          }
+        }
+
+        setQuizQuestions(quizQuestions);
         setCurrentQuestionIndex(0);
         setTimeLeft(8);
         setTimerActive(true);
@@ -129,9 +140,19 @@ const Quiz = () => {
     setTimerActive(true);
 
     const fetchQuestions = async () => {
-      const fetchedQuestions = await loadQuestions();
-      const shuffled = fetchedQuestions.sort(() => 0.5 - Math.random()).slice(0, 30);
-      setQuizQuestions(shuffled);
+      const easyQuestions = await loadEasyQuestions();
+      const hardQuestions = await loadHardQuestions();
+
+      let quizQuestions = [];
+      for (let i = 0; i < 30; i++) {
+        if ((i + 1) % 8 === 0) {
+          quizQuestions.push(hardQuestions[Math.floor(Math.random() * hardQuestions.length)]);
+        } else {
+          quizQuestions.push(easyQuestions[Math.floor(Math.random() * easyQuestions.length)]);
+        }
+      }
+
+      setQuizQuestions(quizQuestions);
       setTimeLeft(8);
     };
     fetchQuestions();
@@ -162,6 +183,11 @@ const Quiz = () => {
 
       <div className="quiz-card">
         <h2 className="quiz-question">{quizQuestions[currentQuestionIndex].question}</h2>
+
+        {((currentQuestionIndex + 1) % 8 === 0) && (
+          <div className="hard-question-label">(hard)</div>
+        )}
+
         <div className={`timer ${timeLeft > 5 ? "green" : timeLeft > 3 ? "orange" : "red"}`}>
           Осталось времени: {timeLeft} сек
         </div>

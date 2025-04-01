@@ -31,8 +31,22 @@ git push origin main
 
 
 
+миграция вопросов в бд:
+
+пароль логин:
+
+const email = "aenoapolt243@gmail.com";
+const password = "AdminAwnopolt876";
 
 
+
+КОМАНДЫ ДЛЯ КОНСОЛИ:
+
+cd (папку бд)
+node migrateData.js
+
+
+КОНФИГУРАЦИЯ RULES DATABASES FIREBASE ДЛЯ ЗАГРУЗКИ ДАННЫХ:
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
