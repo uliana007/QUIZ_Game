@@ -52,8 +52,8 @@ const Quiz = () => {
 
           setQuizQuestions(quizQuestions);
           setCurrentQuestionIndex(0);
-          setTimeLeft(8);
-          setTimerActive(false); // Таймер отключен до старта игры
+          setTimeLeft(8); // Устанавливаем начальное время
+          setTimerActive(true); // Активируем таймер сразу после загрузки вопросов
           setCorrectStreak(0);
           setCorrectAnswers(0);
         } catch (error) {
@@ -65,21 +65,22 @@ const Quiz = () => {
     }
   }, [quizStarted]);
 
+  // Исправлен таймер
   useEffect(() => {
     if (!timerActive || isFinished || quizQuestions.length === 0 || answerStatus !== null) return;
 
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
-        if (prevTime === 1) {
-          handleNextQuestion(false);
-          return 8;
+        if (prevTime <= 1) {
+          handleNextQuestion(false); // Переход к следующему вопросу, если время истекло
+          return 8; // Сбрасываем таймер на начальное значение
         }
-        return prevTime - 1;
+        return prevTime - 1; // Уменьшаем таймер каждую секунду
       });
     }, 1000);
 
-    return () => clearInterval(timer);
-  }, [currentQuestionIndex, timerActive, answerStatus]);
+    return () => clearInterval(timer); // Очищаем интервал при каждом обновлении
+  }, [timerActive, isFinished, quizQuestions, answerStatus]);
 
   const handleAnswer = (answer) => {
     if (answerStatus !== null) return;
@@ -108,7 +109,7 @@ const Quiz = () => {
           logEvent(analytics, "game_won", { correct_answers: correctAnswers }); // Логируем победу
           setHasWon(true);
           setIsFinished(true);
-          setTimerActive(false);
+          setTimerActive(false); // Отключаем таймер
         } else {
           handleNextQuestion();
         }
@@ -132,13 +133,14 @@ const Quiz = () => {
     if (currentQuestionIndex + 1 < quizQuestions.length) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setProgress(((currentQuestionIndex + 1) / quizQuestions.length) * 100);
+      setTimeLeft(8); // Сбрасываем таймер для следующего вопроса
     } else {
       logEvent(analytics, "quiz_finished", { correct_answers: correctAnswers }); // Логируем завершение викторины
       if (correctAnswers < 8) {
         logEvent(analytics, "game_lost", { correct_answers: correctAnswers }); // Логируем проигрыш
       }
       setIsFinished(true);
-      setTimerActive(false);
+      setTimerActive(false); // Отключаем таймер при завершении викторины
     }
   };
 
@@ -184,8 +186,8 @@ const Quiz = () => {
       }
 
       setQuizQuestions(quizQuestions);
-      setTimeLeft(8);
-      setTimerActive(true); // Таймер включается только после загрузки вопросов
+      setTimeLeft(8); // Сбрасываем таймер при рестарте
+      setTimerActive(true); // Включаем таймер
     };
     fetchQuestions();
   };
@@ -244,4 +246,5 @@ const Quiz = () => {
     </div>
   );
 };
+
 export default Quiz;

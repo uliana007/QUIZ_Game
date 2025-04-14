@@ -70,3 +70,8 @@ service cloud.firestore {
     }
   }
 }
+
+
+ЗАГРУЗКА НА ХОСТИНГ
+
+npm run build
