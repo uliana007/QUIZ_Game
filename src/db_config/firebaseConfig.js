@@ -1,6 +1,7 @@
 const { initializeApp } = require("firebase/app");
 const { getAuth } = require("firebase/auth");
 const { getFirestore, collection, getDocs } = require("firebase/firestore");
+const { getAnalytics } = require("firebase/analytics");
 
 const firebaseConfig = {
   apiKey: "AIzaSyASa5sCcILFd5BW-Nrf-BrFVkJHy5lQmNE",
@@ -12,11 +13,13 @@ const firebaseConfig = {
   measurementId: "G-M2FXDHE7EC"
 };
 
-// Initialize Firebase
+// Инициализация Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const analytics = getAnalytics(app); // Инициализация Analytics
 
+// Функция загрузки вопросов
 const loadQuestions = async () => {
   const questionsCol = collection(db, "questions");
   const questionSnapshot = await getDocs(questionsCol);
@@ -24,4 +27,5 @@ const loadQuestions = async () => {
   return questionList;
 };
 
-module.exports = { auth, db, loadQuestions };
+// Экспорт необходимых модулей
+module.exports = { auth, db, analytics, loadQuestions };

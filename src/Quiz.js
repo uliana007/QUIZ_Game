@@ -4,8 +4,9 @@ import Result from "./Result";
 import Instructions from "./Instructions";
 import basketIcon from "./assets/png/football-goal.png";
 import SoundContext from './SoundContext';
-import { loadQuestions as loadEasyQuestions } from './db_config/firebaseConfig';
+import { loadQuestions as loadEasyQuestions, analytics } from './db_config/firebaseConfig';
 import { loadQuestions as loadHardQuestions } from './questions-hard/firebaseConfig';
+import { logEvent } from "firebase/analytics"; // Импорт logEvent из Firebase Analytics
 
 const Quiz = () => {
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -24,27 +25,41 @@ const Quiz = () => {
 
   const { playButtonClickSound } = useContext(SoundContext);
 
+  const filterValidQuestions = (questions) => {
+    return questions.filter(
+      (q) => q && q.question && Array.isArray(q.answers) && q.answers.length > 0 && q.correctAnswer
+    );
+  };
+
   useEffect(() => {
     if (quizStarted) {
+      logEvent(analytics, "quiz_started"); // Логируем начало викторины
       const fetchQuestions = async () => {
-        const easyQuestions = await loadEasyQuestions();
-        const hardQuestions = await loadHardQuestions();
+        try {
+          const easyQuestions = filterValidQuestions(await loadEasyQuestions());
+          const hardQuestions = filterValidQuestions(await loadHardQuestions());
 
-        let quizQuestions = [];
-        for (let i = 0; i < 30; i++) {
-          if ((i + 1) % 8 === 0) {
-            quizQuestions.push(hardQuestions[Math.floor(Math.random() * hardQuestions.length)]);
-          } else {
-            quizQuestions.push(easyQuestions[Math.floor(Math.random() * easyQuestions.length)]);
+          let quizQuestions = [];
+          for (let i = 0; i < 30; i++) {
+            if ((i + 1) % 8 === 0) {
+              const hardQuestion = hardQuestions[Math.floor(Math.random() * hardQuestions.length)];
+              if (hardQuestion) quizQuestions.push(hardQuestion);
+            } else {
+              const easyQuestion = easyQuestions[Math.floor(Math.random() * easyQuestions.length)];
+              if (easyQuestion) quizQuestions.push(easyQuestion);
+            }
           }
-        }
 
-        setQuizQuestions(quizQuestions);
-        setCurrentQuestionIndex(0);
-        setTimeLeft(8);
-        setTimerActive(true);
-        setCorrectStreak(0);
-        setCorrectAnswers(0);
+          setQuizQuestions(quizQuestions);
+          setCurrentQuestionIndex(0);
+          setTimeLeft(8);
+          setTimerActive(false); // Таймер отключен до старта игры
+          setCorrectStreak(0);
+          setCorrectAnswers(0);
+        } catch (error) {
+          console.error("Ошибка загрузки вопросов:", error);
+          logEvent(analytics, "error_loading_questions", { error_message: error.message }); // Логируем ошибку
+        }
       };
       fetchQuestions();
     }
@@ -53,7 +68,6 @@ const Quiz = () => {
   useEffect(() => {
     if (!timerActive || isFinished || quizQuestions.length === 0 || answerStatus !== null) return;
 
-    setTimeLeft(8);
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
         if (prevTime === 1) {
@@ -76,6 +90,13 @@ const Quiz = () => {
     setSelectedAnswer(answer);
     setAnswerStatus(isCorrect ? "correct" : "incorrect");
 
+    // Логируем событие выбора ответа
+    logEvent(analytics, "answer_selected", {
+      question: quizQuestions[currentQuestionIndex].question,
+      selected_answer: answer,
+      is_correct: isCorrect,
+    });
+
     setTimeout(() => {
       document.querySelectorAll(".answer-button").forEach((btn) => btn.blur());
 
@@ -84,6 +105,7 @@ const Quiz = () => {
         setCorrectStreak((prev) => prev + 1);
 
         if (correctStreak + 1 === 8) {
+          logEvent(analytics, "game_won", { correct_answers: correctAnswers }); // Логируем победу
           setHasWon(true);
           setIsFinished(true);
           setTimerActive(false);
@@ -91,8 +113,9 @@ const Quiz = () => {
           handleNextQuestion();
         }
       } else {
+        logEvent(analytics, "streak_broken"); // Логируем сбой серии
         setCorrectStreak(0);
-        setCorrectAnswers(0);  // Сбросить счетчик правильных ответов при ошибке
+        setCorrectAnswers(0); // Сбросить счетчик правильных ответов при ошибке
         handleNextQuestion();
       }
     }, 300);
@@ -110,6 +133,10 @@ const Quiz = () => {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setProgress(((currentQuestionIndex + 1) / quizQuestions.length) * 100);
     } else {
+      logEvent(analytics, "quiz_finished", { correct_answers: correctAnswers }); // Логируем завершение викторины
+      if (correctAnswers < 8) {
+        logEvent(analytics, "game_lost", { correct_answers: correctAnswers }); // Логируем проигрыш
+      }
       setIsFinished(true);
       setTimerActive(false);
     }
@@ -117,18 +144,22 @@ const Quiz = () => {
 
   const startQuiz = () => {
     playButtonClickSound();
+    logEvent(analytics, "instructions_viewed"); // Логируем просмотр инструкций
     setShowInstructions(true);
   };
 
   const startGame = () => {
     playButtonClickSound();
+    logEvent(analytics, "quiz_started_after_instructions"); // Логируем начало викторины после инструкций
     setShowInstructions(false);
     setQuizStarted(true);
   };
 
   const restartQuiz = () => {
+    logEvent(analytics, "quiz_restarted"); // Логируем перезапуск викторины
     playButtonClickSound();
     setIsFinished(false);
+    setShowInstructions(false);
     setCurrentQuestionIndex(0);
     setProgress(0);
     setSelectedAnswer(null);
@@ -136,24 +167,25 @@ const Quiz = () => {
     setCorrectStreak(0);
     setCorrectAnswers(0);
     setHasWon(false);
-    setQuizStarted(true);
-    setTimerActive(true);
 
     const fetchQuestions = async () => {
-      const easyQuestions = await loadEasyQuestions();
-      const hardQuestions = await loadHardQuestions();
+      const easyQuestions = filterValidQuestions(await loadEasyQuestions());
+      const hardQuestions = filterValidQuestions(await loadHardQuestions());
 
       let quizQuestions = [];
       for (let i = 0; i < 30; i++) {
         if ((i + 1) % 8 === 0) {
-          quizQuestions.push(hardQuestions[Math.floor(Math.random() * hardQuestions.length)]);
+          const hardQuestion = hardQuestions[Math.floor(Math.random() * hardQuestions.length)];
+          if (hardQuestion) quizQuestions.push(hardQuestion);
         } else {
-          quizQuestions.push(easyQuestions[Math.floor(Math.random() * easyQuestions.length)]);
+          const easyQuestion = easyQuestions[Math.floor(Math.random() * easyQuestions.length)];
+          if (easyQuestion) quizQuestions.push(easyQuestion);
         }
       }
 
       setQuizQuestions(quizQuestions);
       setTimeLeft(8);
+      setTimerActive(true); // Таймер включается только после загрузки вопросов
     };
     fetchQuestions();
   };
