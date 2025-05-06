@@ -4,9 +4,8 @@ import Result from "./Result";
 import Instructions from "./Instructions";
 import basketIcon from "./assets/png/football-goal.png";
 import SoundContext from './SoundContext';
-import { loadQuestions as loadEasyQuestions, analytics } from './db_config/firebaseConfig';
+import { loadQuestions as loadEasyQuestions } from './db_config/firebaseConfig';
 import { loadQuestions as loadHardQuestions } from './questions-hard/firebaseConfig';
-import { logEvent } from "firebase/analytics"; // Импорт logEvent из Firebase Analytics
 
 const Quiz = () => {
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -33,14 +32,13 @@ const Quiz = () => {
 
   useEffect(() => {
     if (quizStarted) {
-      logEvent(analytics, "quiz_started"); // Логируем начало викторины
       const fetchQuestions = async () => {
         try {
           const easyQuestions = filterValidQuestions(await loadEasyQuestions());
           const hardQuestions = filterValidQuestions(await loadHardQuestions());
 
           let quizQuestions = [];
-          for (let i = 0; i < 30; i++) {
+          for (let i = 0; i < 430; i++) {
             if ((i + 1) % 8 === 0) {
               const hardQuestion = hardQuestions[Math.floor(Math.random() * hardQuestions.length)];
               if (hardQuestion) quizQuestions.push(hardQuestion);
@@ -52,35 +50,34 @@ const Quiz = () => {
 
           setQuizQuestions(quizQuestions);
           setCurrentQuestionIndex(0);
-          setTimeLeft(8); // Устанавливаем начальное время
-          setTimerActive(true); // Активируем таймер сразу после загрузки вопросов
+          setTimeLeft(8);
+          setTimerActive(true);
           setCorrectStreak(0);
           setCorrectAnswers(0);
         } catch (error) {
           console.error("Ошибка загрузки вопросов:", error);
-          logEvent(analytics, "error_loading_questions", { error_message: error.message }); // Логируем ошибку
         }
       };
       fetchQuestions();
     }
   }, [quizStarted]);
 
-  // Исправлен таймер
   useEffect(() => {
     if (!timerActive || isFinished || quizQuestions.length === 0 || answerStatus !== null) return;
 
+    setTimeLeft(8);
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
-        if (prevTime <= 1) {
-          handleNextQuestion(false); // Переход к следующему вопросу, если время истекло
-          return 8; // Сбрасываем таймер на начальное значение
+        if (prevTime === 1) {
+          handleNextQuestion(false);
+          return 8;
         }
-        return prevTime - 1; // Уменьшаем таймер каждую секунду
+        return prevTime - 1;
       });
     }, 1000);
 
-    return () => clearInterval(timer); // Очищаем интервал при каждом обновлении
-  }, [timerActive, isFinished, quizQuestions, answerStatus]);
+    return () => clearInterval(timer);
+  }, [currentQuestionIndex, timerActive, answerStatus]);
 
   const handleAnswer = (answer) => {
     if (answerStatus !== null) return;
@@ -91,13 +88,6 @@ const Quiz = () => {
     setSelectedAnswer(answer);
     setAnswerStatus(isCorrect ? "correct" : "incorrect");
 
-    // Логируем событие выбора ответа
-    logEvent(analytics, "answer_selected", {
-      question: quizQuestions[currentQuestionIndex].question,
-      selected_answer: answer,
-      is_correct: isCorrect,
-    });
-
     setTimeout(() => {
       document.querySelectorAll(".answer-button").forEach((btn) => btn.blur());
 
@@ -106,15 +96,13 @@ const Quiz = () => {
         setCorrectStreak((prev) => prev + 1);
 
         if (correctStreak + 1 === 8) {
-          logEvent(analytics, "game_won", { correct_answers: correctAnswers }); // Логируем победу
           setHasWon(true);
           setIsFinished(true);
-          setTimerActive(false); // Отключаем таймер
+          setTimerActive(false);
         } else {
           handleNextQuestion();
         }
       } else {
-        logEvent(analytics, "streak_broken"); // Логируем сбой серии
         setCorrectStreak(0);
         setCorrectAnswers(0); // Сбросить счетчик правильных ответов при ошибке
         handleNextQuestion();
@@ -133,35 +121,26 @@ const Quiz = () => {
     if (currentQuestionIndex + 1 < quizQuestions.length) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setProgress(((currentQuestionIndex + 1) / quizQuestions.length) * 100);
-      setTimeLeft(8); // Сбрасываем таймер для следующего вопроса
     } else {
-      logEvent(analytics, "quiz_finished", { correct_answers: correctAnswers }); // Логируем завершение викторины
-      if (correctAnswers < 8) {
-        logEvent(analytics, "game_lost", { correct_answers: correctAnswers }); // Логируем проигрыш
-      }
       setIsFinished(true);
-      setTimerActive(false); // Отключаем таймер при завершении викторины
+      setTimerActive(false);
     }
   };
 
   const startQuiz = () => {
     playButtonClickSound();
-    logEvent(analytics, "instructions_viewed"); // Логируем просмотр инструкций
     setShowInstructions(true);
   };
 
   const startGame = () => {
     playButtonClickSound();
-    logEvent(analytics, "quiz_started_after_instructions"); // Логируем начало викторины после инструкций
     setShowInstructions(false);
     setQuizStarted(true);
   };
 
   const restartQuiz = () => {
-    logEvent(analytics, "quiz_restarted"); // Логируем перезапуск викторины
     playButtonClickSound();
     setIsFinished(false);
-    setShowInstructions(false);
     setCurrentQuestionIndex(0);
     setProgress(0);
     setSelectedAnswer(null);
@@ -169,13 +148,15 @@ const Quiz = () => {
     setCorrectStreak(0);
     setCorrectAnswers(0);
     setHasWon(false);
+    setQuizStarted(true);
+    setTimerActive(true);
 
     const fetchQuestions = async () => {
       const easyQuestions = filterValidQuestions(await loadEasyQuestions());
       const hardQuestions = filterValidQuestions(await loadHardQuestions());
 
       let quizQuestions = [];
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 40; i++) {
         if ((i + 1) % 8 === 0) {
           const hardQuestion = hardQuestions[Math.floor(Math.random() * hardQuestions.length)];
           if (hardQuestion) quizQuestions.push(hardQuestion);
@@ -186,8 +167,7 @@ const Quiz = () => {
       }
 
       setQuizQuestions(quizQuestions);
-      setTimeLeft(8); // Сбрасываем таймер при рестарте
-      setTimerActive(true); // Включаем таймер
+      setTimeLeft(8);
     };
     fetchQuestions();
   };
@@ -219,7 +199,7 @@ const Quiz = () => {
         <h2 className="quiz-question">{quizQuestions[currentQuestionIndex].question}</h2>
 
         {((currentQuestionIndex + 1) % 8 === 0) && (
-          <div className="hard-question-label">(hard)</div>
+          <div className="hard-question-label"></div>
         )}
 
         <div className={`timer ${timeLeft > 5 ? "green" : timeLeft > 3 ? "orange" : "red"}`}>

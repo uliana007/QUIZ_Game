@@ -75,3 +75,10 @@ service cloud.firestore {
 ЗАГРУЗКА НА ХОСТИНГ
 
 npm run build
+
+
+
+
+
+черновик:
+"homepage": "https://uliana007.github.io/QUIZ_Game/"
