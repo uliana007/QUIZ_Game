@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/QUIZ_Game/static/css/main.1c1999a5.css",
-    "main.js": "/QUIZ_Game/static/js/main.d41816ad.js",
+    "main.js": "/QUIZ_Game/static/js/main.f6abc613.js",
     "static/media/fon_music.mp3": "/QUIZ_Game/static/media/fon_music.09b4b81fab074360f0b9.mp3",
     "static/media/matreshka-top-v2.png": "/QUIZ_Game/static/media/matreshka-top-v2.da27da29929a322f58bf.png",
     "static/media/sad-football.png": "/QUIZ_Game/static/media/sad-football.078af36f1b3c387f2a87.png",
@@ -23,10 +23,10 @@
     "static/media/click-v2.mp3": "/QUIZ_Game/static/media/click-v2.e09f00c73ea83799b3c7.mp3",
     "index.html": "/QUIZ_Game/index.html",
     "main.1c1999a5.css.map": "/QUIZ_Game/static/css/main.1c1999a5.css.map",
-    "main.d41816ad.js.map": "/QUIZ_Game/static/js/main.d41816ad.js.map"
+    "main.f6abc613.js.map": "/QUIZ_Game/static/js/main.f6abc613.js.map"
   },
   "entrypoints": [
     "static/css/main.1c1999a5.css",
-    "static/js/main.d41816ad.js"
+    "static/js/main.f6abc613.js"
   ]
 }
