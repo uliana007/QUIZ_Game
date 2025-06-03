@@ -16,6 +16,18 @@ export const promoList = [
   { label: "Скидка 70% на товары  в Polaris", code: "sportliga25adv", referralLink: "https://tplto.com/dce4f605/" },
   { label: "Скидка 300 ₽ на корзину от 3000₽ в КотоФото", code: "sportliga", referralLink: "https://tplto.com/dde4f605/" },
   { label: "Скидка 500 ₽ на корзину от 7000₽ в КотоФото", code: "sportliga7", referralLink: "https://tplto.com/dde4f605/" },
+
+  { label: "Скидка 10% на всё по промокоду", code: "ADVCAKE", referralLink: "https://tplto.com/d5e4f605/" },
+  { label: "Скидка 12% на заказ от 3900 ₽ на первую покупку", code: "a12sale", referralLink: "http://tplto.com/d3e4f605/" },
+
+  { label: "Скидка 5% на заказ", code: "sale5", referralLink: "https://tplto.com/d6e4f605/" },
+
+  { label: "Скидка 1000 ₽ от суммы корзины 20 000 рублей", code: "advcake1000r", referralLink: "https://tplto.com/d7e4f605/" },
+
+  { label: "Скидка 1000 руб на сумму от 40 000 руб", code: "hrucoupon1k", referralLink: "https://tplto.com/dee4f605/" },
+
+  { label: "Скидка 3% при покупке от 1 000 руб", code: "advertise0507", referralLink: "https://tplto.com/dfe4f605/" },
+  // 18 промиков
 ];
 
 const PromoNotification = ({ message }) => {
