@@ -1,9 +1,13 @@
 import React from "react";
 import "./css/WelcomeScreen.css";
 import soundManager from './soundManager';
+import { trackGoal } from './utils/analytics'; 
+
+
 
 const WelcomeScreen = ({ startQuiz }) => {
   const handleStartClick = () => {
+    trackGoal('quiz_click'); // 👉 Отправка события в Яндекс.Метрику
     soundManager.playButtonClickSound();
     startQuiz();
   };
