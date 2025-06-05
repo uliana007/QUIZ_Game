@@ -28,3 +28,57 @@ Copy
 git push origin main
 
 чтобы задеплоидить: ?npm run deploy?
+
+
+
+миграция вопросов в бд:
+
+пароль логин:
+
+const email = "aenoapolt243@gmail.com";
+const password = "AdminAwnopolt876";
+
+
+
+КОМАНДЫ ДЛЯ КОНСОЛИ:
+
+cd (папку бд)
+node migrateData.js
+
+
+КОНФИГУРАЦИЯ RULES DATABASES FIREBASE ДЛЯ ЗАГРУЗКИ ДАННЫХ:
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Временно разрешить чтение и запись для всех пользователей
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+
+Важно
+После завершения миграции данных, не забудьте вернуть правила безопасности к более строгим настройкам, чтобы защитить вашу базу данных от неавторизованного доступа. Пример обновленных правил безопасности:
+
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Разрешить чтение и запись только аутентифицированным пользователям
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+
+
+ЗАГРУЗКА НА ХОСТИНГ
+
+npm run build
+
+
+
+
+
+черновик:
+"homepage": "https://uliana007.github.io/QUIZ_Game/"

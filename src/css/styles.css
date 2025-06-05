@@ -296,7 +296,7 @@ body {
 
   .correct-answer-counter {
     position: absolute;
-    top: -5px;  /* Подкорректируй по необходимости */
+    top: -5px !important;  /* Подкорректируй по необходимости */
     left: 18px; /* Подкорректируй по необходимости */
     background-color: #ffcc0000;
     color: #ffffff;
@@ -537,7 +537,7 @@ body {
   .timer {
     font-size: 19px;
     position: absolute;
-    top: 110px; /* Фиксированная позиция сверху */
+    top: 140px; /* Подвинут на 20 пикселей вниз от первоначальной позиции */
     left: 50%;
     transform: translateX(-50%); /* Центрируем */
     font-weight: bold;
@@ -545,7 +545,7 @@ body {
     white-space: nowrap; /* Запрещаем перенос текста */
     text-align: center;  /* Выравниваем текст по центру */
     min-width: 200px; /* Гарантируем, что текст не будет сжиматься */
-  }
+}
   
   /* Зелёный цвет (6-8 секунд) */
   .timer.green {
@@ -567,6 +567,16 @@ body {
   
 
   
+}
+
+
+.hard-question-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(234, 254, 255);
+  text-align: center;
+  margin-top: -40px;
+  z-index: 100;
 }
 
 /* Общие стили для логотипа */

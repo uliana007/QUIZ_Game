@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import WelcomeScreen from "./WelcomeScreen";
 import Result from "./Result";
 import Instructions from "./Instructions";
-import questions from "./data";
 import basketIcon from "./assets/png/football-goal.png";
 import SoundContext from './SoundContext';
+import { loadQuestions as loadEasyQuestions } from './db_config/firebaseConfig';
+import { loadQuestions as loadHardQuestions } from './questions-hard/firebaseConfig';
 
 const Quiz = () => {
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -23,15 +24,41 @@ const Quiz = () => {
 
   const { playButtonClickSound } = useContext(SoundContext);
 
+  const filterValidQuestions = (questions) => {
+    return questions.filter(
+      (q) => q && q.question && Array.isArray(q.answers) && q.answers.length > 0 && q.correctAnswer
+    );
+  };
+
   useEffect(() => {
     if (quizStarted) {
-      const shuffled = questions.sort(() => 0.5 - Math.random()).slice(0, 30);
-      setQuizQuestions(shuffled);
-      setCurrentQuestionIndex(0);
-      setTimeLeft(8);
-      setTimerActive(true);
-      setCorrectStreak(0);
-      setCorrectAnswers(0);
+      const fetchQuestions = async () => {
+        try {
+          const easyQuestions = filterValidQuestions(await loadEasyQuestions());
+          const hardQuestions = filterValidQuestions(await loadHardQuestions());
+
+          let quizQuestions = [];
+          for (let i = 0; i < 430; i++) {
+            if ((i + 1) % 8 === 0) {
+              const hardQuestion = hardQuestions[Math.floor(Math.random() * hardQuestions.length)];
+              if (hardQuestion) quizQuestions.push(hardQuestion);
+            } else {
+              const easyQuestion = easyQuestions[Math.floor(Math.random() * easyQuestions.length)];
+              if (easyQuestion) quizQuestions.push(easyQuestion);
+            }
+          }
+
+          setQuizQuestions(quizQuestions);
+          setCurrentQuestionIndex(0);
+          setTimeLeft(8);
+          setTimerActive(true);
+          setCorrectStreak(0);
+          setCorrectAnswers(0);
+        } catch (error) {
+          console.error("Ошибка загрузки вопросов:", error);
+        }
+      };
+      fetchQuestions();
     }
   }, [quizStarted]);
 
@@ -77,7 +104,7 @@ const Quiz = () => {
         }
       } else {
         setCorrectStreak(0);
-        setCorrectAnswers(0);  // Сбросить счетчик правильных ответов при ошибке
+        setCorrectAnswers(0); // Сбросить счетчик правильных ответов при ошибке
         handleNextQuestion();
       }
     }, 300);
@@ -124,9 +151,25 @@ const Quiz = () => {
     setQuizStarted(true);
     setTimerActive(true);
 
-    const shuffled = questions.sort(() => 0.5 - Math.random()).slice(0, 30);
-    setQuizQuestions(shuffled);
-    setTimeLeft(8);
+    const fetchQuestions = async () => {
+      const easyQuestions = filterValidQuestions(await loadEasyQuestions());
+      const hardQuestions = filterValidQuestions(await loadHardQuestions());
+
+      let quizQuestions = [];
+      for (let i = 0; i < 40; i++) {
+        if ((i + 1) % 8 === 0) {
+          const hardQuestion = hardQuestions[Math.floor(Math.random() * hardQuestions.length)];
+          if (hardQuestion) quizQuestions.push(hardQuestion);
+        } else {
+          const easyQuestion = easyQuestions[Math.floor(Math.random() * easyQuestions.length)];
+          if (easyQuestion) quizQuestions.push(easyQuestion);
+        }
+      }
+
+      setQuizQuestions(quizQuestions);
+      setTimeLeft(8);
+    };
+    fetchQuestions();
   };
 
   if (!quizStarted && !showInstructions) {
@@ -154,6 +197,11 @@ const Quiz = () => {
 
       <div className="quiz-card">
         <h2 className="quiz-question">{quizQuestions[currentQuestionIndex].question}</h2>
+
+        {((currentQuestionIndex + 1) % 8 === 0) && (
+          <div className="hard-question-label"></div>
+        )}
+
         <div className={`timer ${timeLeft > 5 ? "green" : timeLeft > 3 ? "orange" : "red"}`}>
           Осталось времени: {timeLeft} сек
         </div>
