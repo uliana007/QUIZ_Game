@@ -3,16 +3,28 @@ import "./css/WelcomeScreen.css";
 import soundManager from './soundManager';
 import { trackGoal } from './utils/analytics'; 
 import { logEvent } from "./utils/googleAnalytics";
-
+// 🟩 Добавляем импорт хука для Telemetree
+import { useTWAEvent } from '@tonsolutions/telemetree-react';
 
 
 const WelcomeScreen = ({ startQuiz }) => {
+
+  // 🟩 Инициализируем Telemetree event builder
+  const eventBuilder = useTWAEvent();
+
 const handleStartClick = () => {
   console.log('Клик на "Начать викторину" - отправляем цель в Яндекс.Метрику');
   trackGoal('quiz_click');
+  
       // 🟩 Добавляем отправку события в Google Analytics
     logEvent("engagement", "click_quiz", "Клик Викторина"); 
-    
+
+     // 🟩 Telemetree событие
+    eventBuilder.track('Start Quiz Clicked', {
+      label: 'Start Quiz Button',
+      category: 'User Engagement',
+    });
+
   soundManager.playButtonClickSound();
   startQuiz();
 };
