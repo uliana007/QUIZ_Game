@@ -2,6 +2,7 @@ import React from "react";
 import "./css/WelcomeScreen.css";
 import soundManager from './soundManager';
 import { trackGoal } from './utils/analytics'; 
+import { logEvent } from "./utils/googleAnalytics";
 
 
 
@@ -9,6 +10,9 @@ const WelcomeScreen = ({ startQuiz }) => {
 const handleStartClick = () => {
   console.log('Клик на "Начать викторину" - отправляем цель в Яндекс.Метрику');
   trackGoal('quiz_click');
+      // 🟩 Добавляем отправку события в Google Analytics
+    logEvent("engagement", "click_quiz", "Клик Викторина"); 
+    
   soundManager.playButtonClickSound();
   startQuiz();
 };

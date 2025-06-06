@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./css/Matreshka.css";
 import SoundContext from './SoundContext';
 import { trackGoal } from './utils/analytics';
+import { logEvent } from "./utils/googleAnalytics"; // 🟩 импорт функции логирования GA
 
 export const promoList = [
   { label: "Скидка 200₽ на первый онлайн-заказ по промокоду", code: "VSEAF8", referralLink: "https://pxl.leads.su/click/69922da7a7cc76bcdd989024cb86a6f9?erid=2W5zFJodDUL" },
@@ -55,12 +56,14 @@ function PromoCodeTicket({ promoCode }) {
 
  const handleReferralLinkClick = () => {
    trackGoal('promo_referral_click'); // 🟥 цель перехода по ссылке
+   logEvent("engagement", "click_referral_link", "Клик Перейти по ссылке"); // 🟩 Google Analytics событие перехода по ссылке
  };
 
   const copyToClipboard = () => {
     playButtonClickSound();
 
 trackGoal('promo_copy'); // 🟥 цель копирования промокода
+logEvent("engagement", "click_copy_promo", "Клик Скопировать промокод"); // 🟩 Google Analytics событие копирования
 
     navigator.clipboard.writeText(promoCode.code).then(() => {
       setNotification("Промокод скопирован!");
