@@ -7,6 +7,7 @@ import backgroundImage from "./assets/png/fon-balls.png";
 import soundManager from './soundManager';
 import BlurScreen from './BlurScreen';
 import { SoundProvider } from './SoundContext';
+import { TrackGroups, TwaAnalyticsProvider } from '@tonsolutions/telemetree-react';
 
 function App() {
   const [isBlurScreenVisible, setIsBlurScreenVisible] = useState(true);
@@ -22,6 +23,11 @@ function App() {
   };
 
   return (
+    <TwaAnalyticsProvider   // 🟩 обёртка приложения для Telemetree
+      projectId='abe9b751-af69-441c-98c0-f3bbd46e4363'
+        apiKey='99d1568a-9497-4590-b8bb-ba1cee7da514'
+        trackGroup={TrackGroups.MEDIUM} // default is TrackGroups.MEDIUM
+    >
     <SoundProvider>
       <div className="app-container">
         {isBlurScreenVisible && <BlurScreen onClick={handleBlurScreenClick} />}
@@ -38,6 +44,7 @@ function App() {
         )}
       </div>
     </SoundProvider>
+     </TwaAnalyticsProvider>  // 🟩 закрывающий тег Telemetree
   );
 }
 
