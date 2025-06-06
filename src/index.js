@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client"; // Импортируем createRoot
 import App from "./App";
 
-import { initGA } from "./analyticsGA"; // импорт инициализации GA
+import { initGA } from "./utils/googleAnalytics"; // импорт инициализации GA
 
 console.log("Telegram SDK:", sdk);
 sdk.ready();
