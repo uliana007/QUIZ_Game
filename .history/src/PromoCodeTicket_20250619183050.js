@@ -30,7 +30,7 @@ export const promoList = [
   // внизу промокоды из синий таблицы, без реферальной ссылки (9 штук)
   { label: "Скидка 25% на подписку Premium в Twinby", code: "SPORT", referralLink: "https://twinby.ru/?utm_source=yandex&utm_medium=cpc&utm_campaign=onl_cpc_yandex_%7B701194816%7D&utm_content=cname_%7BR-elama+%7C+МК+twinby.ru+%7C+iOS+и+Android+%7C+Автотаргет%7D%7Cbanner_%7B17122756142%7D&utm_term=%7B%7Bgeo%7D%7D_%7B%7Bgender%7D%7D_%7B%7Bage%7D%7D&yclid=5482279896128684031" },
   { label: "Подписка 45 дней за 1 рубль в START по персональному промокоду", code: "gr45sportl", referralLink: "https://start.ru/" },
-  { label: "Скидка 2% по персональному промокоду на сайте ВсеИнструменты.ру", code: "XMK1HH0X", referralLink: "https://www.vseinstrumenti.ru/b2b/?utm_source=yandex&utm_medium=cpc&utm_campaign=fokb2bank_search_na_na_imidzh_Moskva_na&utm_content=16805210237&utm_term=ST:search%7CS:none%7CAP:no%7CPT:premium%7CP:2%7CDT:desktop%7CRI:213%7CCI:117695556%7CGI:5535601986%7CPI:54179166660%7CAI:16805210237%7CRT:54179166660%7CKW:---autotargeting%7CRN:Москва&yclid=18066376254346493951" },
+  { label: "Скидка 2% по персональному промокоду на сайте ВсеИнструменты", code: "XMK1HH0X", referralLink: "https://www.vseinstrumenti.ru/b2b/?utm_source=yandex&utm_medium=cpc&utm_campaign=fokb2bank_search_na_na_imidzh_Moskva_na&utm_content=16805210237&utm_term=ST:search%7CS:none%7CAP:no%7CPT:premium%7CP:2%7CDT:desktop%7CRI:213%7CCI:117695556%7CGI:5535601986%7CPI:54179166660%7CAI:16805210237%7CRT:54179166660%7CKW:---autotargeting%7CRN:Москва&yclid=18066376254346493951" },
 
 ];
 
