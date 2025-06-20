@@ -30,7 +30,7 @@ export const promoList = [
   // внизу промокоды из синий таблицы, без реферальной ссылки (9 штук)
   { label: "Скидка 25% на подписку Premium в Twinby", code: "SPORT", referralLink: "https://twinby.biz/sport" },
   { label: "Подписка 45 дней за 1 рубль в START по персональному промокоду", code: "gr45sportl", referralLink: "https://start.ru/" },
-  { label: "Скидка 2% по персональному промокоду на сайте ВсеИнструменты.ру", code: "XMK1HH0X", referralLink: "https://www.vseinstrumenti.ru/sale/volna-vygody-06-2025/?utm_source=influencio&utm_medium=cpa" },
+  { label: "Скидка 2% по персональному промокоду на сайте ВсеИнструменты.ру", code: "XMK1HH0X", referralLink: "https://www.vseinstrumenti.ru/b2b/?utm_source=yandex&utm_medium=cpc&utm_campaign=fokb2bank_search_na_na_imidzh_Moskva_na&utm_content=16805210237&utm_term=ST:search%7CS:none%7CAP:no%7CPT:premium%7CP:2%7CDT:desktop%7CRI:213%7CCI:117695556%7CGI:5535601986%7CPI:54179166660%7CAI:16805210237%7CRT:54179166660%7CKW:---autotargeting%7CRN:Москва&yclid=18066376254346493951" },
 
 ];
 
