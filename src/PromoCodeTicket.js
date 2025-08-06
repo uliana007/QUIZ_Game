@@ -15,7 +15,6 @@ export const promoList = [
   { label: "5 фрибетов по 1 000 руб в Парибет", code: "SPORTLIGA7", referralLink: "https://pari.ru/" },
   { label: "Фрибет до 15 000 в Фонбет", code: "SPORTLIGA7", referralLink: "https://fon.bet/" },
   { label: "Скидка 5% на один заказ по промокоду в Brandshop", code: "BRANDSHOP", referralLink: "https://tplto.com/dbe4f605/" },
-  { label: "Скидка 70% на товары  в Polaris", code: "sportliga25adv", referralLink: "https://tplto.com/dce4f605/" },
   { label: "Скидка 300 ₽ на корзину от 3000₽ в КотоФото", code: "sportliga", referralLink: "https://tplto.com/dde4f605/" },
   { label: "Скидка 500 ₽ на корзину от 7000₽ в КотоФото", code: "sportliga7", referralLink: "https://tplto.com/dde4f605/" },
 
@@ -23,14 +22,12 @@ export const promoList = [
   { label: "Скидка 12% на заказ от 3900 ₽ на первую покупку в GLOBUS", code: "a12sale", referralLink: "http://tplto.com/d3e4f605/" },
   { label: "Скидка 5% на заказ в магазине Braun", code: "sale5", referralLink: "https://tplto.com/d6e4f605/" },
   { label: "Скидка 1000 ₽ от суммы корзины 20 000 рублей в Бигам", code: "advcake1000r", referralLink: "https://tplto.com/d7e4f605/" },
-  { label: "Скидка 1000 руб на сумму от 40 000 руб в Холодильник.ру", code: "hrucoupon1k", referralLink: "https://tplto.com/dee4f605/" },
   { label: "Скидка 3% при покупке от 1 000 руб в Максидом", code: "advertise0507", referralLink: "https://tplto.com/dfe4f605/" },
-  // 18 промиков
+  // 16 промиков
 
   // внизу промокоды из синий таблицы, без реферальной ссылки (9 штук)
   { label: "Скидка 25% на подписку Premium в Twinby", code: "SPORT", referralLink: "https://twinby.biz/sport" },
   { label: "Подписка 45 дней за 1 рубль в START по персональному промокоду", code: "gr45sportl", referralLink: "https://start.ru/" },
-  { label: "Скидка 2% по персональному промокоду на сайте ВсеИнструменты.ру", code: "XMK1HH0X", referralLink: "https://www.vseinstrumenti.ru/sale/volna-vygody-06-2025/?utm_source=influencio&utm_medium=cpa" },
 
 ];
 
