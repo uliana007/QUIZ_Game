@@ -8,7 +8,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-    // Убраны predeploy и deploy для Timeweb, можно вернуть для GitHub Pages
+    // Убраны predeploy и deploy, так как не нужны для Timeweb/Vercel
     // "predeploy": "npm run build",
     // "deploy": "gh-pages -d build"
   },
@@ -52,5 +52,6 @@
   "devDependencies": {
     "gh-pages": "^6.3.0"
   }
-  // Убрана строка "homepage": ""
+  // Убрана строка "homepage": "https://uliana007.github.io/QUIZ_Game/"
+  // Для Timeweb/Vercel можно оставить без homepage или добавить "/" при необходимости
 }
