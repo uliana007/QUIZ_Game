@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./css/Matreshka.css";
-import "./css/PromoCodeTicket.css";
 import SoundContext from './SoundContext';
 import { trackGoal } from './utils/analytics';
 import { logEvent } from "./utils/googleAnalytics"; // 🟩 импорт функции логирования GA
@@ -40,41 +39,40 @@ export const promoList = [
   { label: "Подписка 45 дней за 1 рубль в START по персональному промокоду", code: "gr45sportl", referralLink: "https://start.ru/" },
 
 ];
-const PromoNotification = ({ message }) => (
-  <AnimatePresence>
-    {message && (
-      <motion.div
-        className="promo-notification"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.3 }}
-      >
-        {message}
-      </motion.div>
-    )}
-  </AnimatePresence>
-);
 
-function PromoCodeChest({ promoCode }) {
+const PromoNotification = ({ message }) => {
+  return (
+    <AnimatePresence>
+      {message && (
+        <motion.div
+          className="promo-notification"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3 }}
+        >
+          {message}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+function PromoCodeTicket({ promoCode }) {
   const [notification, setNotification] = useState(null);
   const { playButtonClickSound } = useContext(SoundContext);
-  const [opened, setOpened] = useState(false);
 
-  const handleOpenChest = () => {
-    playButtonClickSound();
-    setOpened(true);
-  };
-
-  const handleReferralLinkClick = () => {
-    trackGoal('promo_referral_click');
-    logEvent("engagement", "click_referral_link", "Клик Перейти по ссылке");
-  };
+ const handleReferralLinkClick = () => {
+   trackGoal('promo_referral_click'); // 🟥 цель перехода по ссылке
+   logEvent("engagement", "click_referral_link", "Клик Перейти по ссылке"); // 🟩 Google Analytics событие перехода по ссылке
+ };
 
   const copyToClipboard = () => {
     playButtonClickSound();
-    trackGoal('promo_copy');
-    logEvent("engagement", "click_copy_promo", "Клик Скопировать промокод");
+
+trackGoal('promo_copy'); // 🟥 цель копирования промокода
+logEvent("engagement", "click_copy_promo", "Клик Скопировать промокод"); // 🟩 Google Analytics событие копирования
+
     navigator.clipboard.writeText(promoCode.code).then(() => {
       setNotification("Промокод скопирован!");
       setTimeout(() => setNotification(null), 3000);
@@ -85,64 +83,40 @@ function PromoCodeChest({ promoCode }) {
 
   return (
     <motion.div
-      className="promo-chest-overlay"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      className="promo-ticket-container"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="promo-chest-container">
-        {!opened ? (
-          <motion.button
-            className="chest-btn"
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            whileHover={{ scale: 1.05 }}
-            onClick={handleOpenChest}
+      <div className="promo-ticket bg-white p-4 rounded-lg shadow-md">
+        <motion.div className="font-bold text-lg mb-4">
+          {promoCode ? promoCode.label : ""}
+        </motion.div>
+        
+        <motion.div className="text-gray-700 mb-4 mt-2">
+          ВАШ ПРОМОКОД: <strong>{promoCode ? promoCode.code : ""}</strong>
+        </motion.div>
+
+        <motion.button
+          onClick={copyToClipboard}
+          className="copy-button mb-6" // Увеличенный margin-bottom
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          📋 Скопировать
+        </motion.button>
+
+        {promoCode?.referralLink && (
+          <motion.a
+            href={promoCode.referralLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="referral-link pulsing-cloud mt-4 block" // Добавлен margin-top
+            onClick={handleReferralLinkClick} // 🟥 обработчик клика по ссылке
           >
-            <span role="img" aria-label="chest" className="chest-icon">🗄️</span>
-            <span className="chest-text">Открыть сундук победителя!</span>
-          </motion.button>
-        ) : (
-          <AnimatePresence>
-            <motion.div
-              className="chest-content"
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 100, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="promo-code-win">
-                <span className="win-badge">🏆 Победитель!</span>
-                <div className="promo-label">{promoCode?.label}</div>
-                <div className="promo-code-text">
-                  Ваш промокод: <strong>{promoCode?.code}</strong>
-                </div>
-              </div>
-              <div className="chest-actions">
-                <motion.button
-                  onClick={copyToClipboard}
-                  className="copy-button"
-                  whileHover={{ scale: 1.08 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  📋 Скопировать
-                </motion.button>
-                {promoCode?.referralLink && (
-                  <motion.a
-                    href={promoCode.referralLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="referral-link chest-referral"
-                    whileHover={{ scale: 1.08 }}
-                    onClick={handleReferralLinkClick}
-                  >
-                    🚀 Перейти по ссылке
-                  </motion.a>
-                )}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+            Перейти по ссылке
+          </motion.a>
         )}
       </div>
       {notification && <PromoNotification message={notification} />}
@@ -150,4 +124,5 @@ function PromoCodeChest({ promoCode }) {
   );
 }
 
-export default PromoCodeChest;
+
+export default PromoCodeTicket;

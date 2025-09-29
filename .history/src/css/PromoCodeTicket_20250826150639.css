@@ -1,0 +1,203 @@
+/* Вариант 3: Неоновая ночь (темный фон, кислотные акценты, нестандартный формат карточки) */
+
+.promo-chest-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(120deg, #14142b 70%, #1f1f3c 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  /* Неоновая рамка вокруг карточки */
+}
+
+.promo-chest-container {
+  /* Нестандартная карточка: скошенные углы, неоновая рамка, тёмный фон */
+  background: linear-gradient(135deg, #22224d 60%, #1f1f3c 100%);
+  border-radius: 32px 8px 32px 8px;
+  padding: 40px 38px 28px 38px;
+  min-width: 370px;
+  max-width: 95vw;
+  position: relative;
+  text-align: center;
+  box-shadow:
+    0 0 0 6px #20e3b2,
+    0 0 44px 0 #20e3b2,
+    0 8px 40px 0 #0e0e1e;
+  border: 3px solid #20e3b2;
+  /* Внутренний glow для вау-эффекта */
+  animation: neonGlow 2.2s infinite alternate;
+}
+
+@keyframes neonGlow {
+  0% { box-shadow: 0 0 0 6px #20e3b2, 0 0 44px 0 #20e3b2, 0 8px 40px 0 #0e0e1e; }
+  100% { box-shadow: 0 0 0 12px #20e3b2, 0 0 66px 0 #20e3b2, 0 8px 40px 0 #0e0e1e; }
+}
+
+.chest-btn {
+  background: linear-gradient(90deg, #20e3b2 50%, #ff2ae6 100%);
+  border: none;
+  border-radius: 20px;
+  font-size: 23px;
+  color: #fff;
+  padding: 26px 30px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 36px #ff2ae6, 0 0 12px #20e3b2;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px #20e3b2;
+  transition: background 0.3s, transform 0.15s;
+  outline: none;
+  animation: chest-pulse-neon 1.4s infinite alternate;
+}
+
+@keyframes chest-pulse-neon {
+  0% { box-shadow: 0 2px 36px #ff2ae6, 0 0 12px #20e3b2; }
+  100% { box-shadow: 0 2px 48px #ff2ae6, 0 0 24px #20e3b2; }
+}
+
+.chest-icon {
+  font-size: 44px;
+  animation: chest-pulse-neon 2.2s infinite alternate;
+  filter: drop-shadow(0 0 9px #ff2ae6);
+}
+
+.chest-text {
+  font-size: 21px;
+  letter-spacing: 2px;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 0 12px #20e3b2, 0 0 6px #ff2ae6;
+}
+
+.chest-content {
+  animation: chest-content-appear 0.8s cubic-bezier(.33,1.23,.62,1) 1;
+}
+
+@keyframes chest-content-appear {
+  0% { opacity: 0; transform: translateY(60px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1.02); }
+}
+
+.promo-code-win {
+  margin-bottom: 22px;
+}
+
+.win-badge {
+  display: inline-block;
+  font-size: 19px;
+  background: linear-gradient(90deg, #20e3b2 60%, #ff2ae6 100%);
+  color: #18182c;
+  border-radius: 14px 4px 14px 4px;
+  padding: 7px 22px;
+  font-weight: bold;
+  margin-bottom: 13px;
+  box-shadow: 0 2px 18px #ff2ae6, 0 0 10px #20e3b2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px #fff;
+}
+
+.promo-label {
+  font-size: 20px;
+  color: #ff2ae6;
+  margin-bottom: 7px;
+  font-weight: 600;
+  text-shadow: 0 0 12px #20e3b2, 0 0 4px #ff2ae6;
+}
+
+.promo-code-text {
+  font-size: 26px;
+  color: #20e3b2;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  background: #18182c;
+  border-radius: 14px 4px 14px 4px;
+  padding: 12px 19px;
+  box-shadow: 0 1px 14px #20e3b2, 0 0 12px #ff2ae6;
+  display: inline-block;
+  text-shadow: 0 0 12px #ff2ae6, 0 0 6px #20e3b2;
+}
+
+.chest-actions {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 10px;
+}
+
+.copy-button {
+  background: linear-gradient(90deg, #20e3b2 60%, #ff2ae6 100%);
+  color: #18182c;
+  border: none;
+  border-radius: 16px 4px 16px 4px;
+  font-size: 19px;
+  padding: 13px 25px;
+  font-weight: 700;
+  box-shadow: 0 2px 22px #20e3b2, 0 0 12px #ff2ae6;
+  cursor: pointer;
+  transition: background 0.3s, color 0.2s, transform 0.1s;
+  text-shadow: 0 0 8px #20e3b2, 0 0 4px #ff2ae6;
+  outline: none;
+}
+.copy-button:hover {
+  background: linear-gradient(90deg, #ff2ae6 60%, #20e3b2 100%);
+  color: #fff;
+  box-shadow: 0 2px 42px #ff2ae6, 0 0 22px #20e3b2;
+}
+
+.chest-referral {
+  background: #1f1f3c;
+  color: #20e3b2;
+  border-radius: 16px 4px 16px 4px;
+  font-size: 19px;
+  padding: 13px 25px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 22px #20e3b2, 0 0 12px #ff2ae6;
+  transition: background 0.3s, color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-shadow: 0 0 8px #20e3b2, 0 0 4px #ff2ae6;
+  outline: none;
+}
+.chest-referral:hover {
+  background: linear-gradient(90deg, #ff2ae6 60%, #20e3b2 100%);
+  color: #fff;
+  box-shadow: 0 2px 42px #ff2ae6, 0 0 22px #20e3b2;
+}
+
+/* Неоновая анимация для уведомления */
+.promo-notification {
+  background: #1f1f3c;
+  color: #20e3b2;
+  border: 2px solid #ff2ae6;
+  box-shadow: 0 2px 22px #20e3b2, 0 0 12px #ff2ae6;
+  font-size: 18px;
+  padding: 18px 32px;
+  border-radius: 16px 4px 16px 4px;
+  font-weight: bold;
+  text-shadow: 0 0 6px #ff2ae6, 0 0 4px #20e3b2;
+  letter-spacing: 2px;
+  animation: neonGlow 2.2s infinite alternate;
+  z-index: 100;
+}
+
+@media (max-width: 600px) {
+  .promo-chest-container {
+    min-width: 92vw;
+    padding: 18px 4vw 18px 4vw;
+  }
+  .promo-code-text, .copy-button, .chest-referral {
+    font-size: 16px;
+    padding: 8px 9px;
+  }
+}

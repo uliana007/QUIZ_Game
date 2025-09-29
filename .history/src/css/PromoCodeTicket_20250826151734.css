@@ -1,0 +1,179 @@
+/* Вариант 5: Золотой Fantasy (черный/золото, узоры, luxury, нестандартная форма) */
+
+.promo-chest-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(30, 25, 6, 0.85); /* Полупрозрачный черный с золотым эффектом */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.promo-chest-container {
+  background: repeating-linear-gradient(
+    135deg,
+    #191406 0px, #191406 18px,
+    #c7a334 18px, #c7a334 22px,
+    #fffbe6 22px, #fffbe6 40px
+  );
+  border-radius: 48px 14px 48px 14px;
+  padding: 54px 54px 38px 54px;
+  min-width: 370px;
+  max-width: 95vw;
+  position: relative;
+  text-align: center;
+  box-shadow:
+    0 0 0 8px #c7a334,
+    0 12px 56px 0 #c7a334,
+    0 2px 22px 0 #191406;
+  border: 4px double #c7a334;
+  outline: 3px solid #fffbe6;
+  /* Легкая анимация сияния */
+  animation: goldShine 2.7s infinite alternate;
+}
+
+@keyframes goldShine {
+  0% { box-shadow: 0 0 0 8px #c7a334, 0 12px 56px 0 #c7a334, 0 2px 22px 0 #191406; }
+  100% { box-shadow: 0 0 0 16px #ffe272, 0 24px 88px 0 #c7a334, 0 2px 32px 0 #191406; }
+}
+
+.chest-btn {
+  background: linear-gradient(90deg, #ffe272 55%, #c7a334 100%);
+  border: none;
+  border-radius: 24px 6px 24px 6px;
+  font-size: 25px;
+  color: #191406;
+  padding: 26px 32px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 38px #ffe272, 0 0 12px #c7a334;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px #fffbe6;
+  transition: background 0.3s, transform 0.12s;
+  outline: none;
+  animation: goldPulse 2.3s infinite alternate;
+}
+
+@keyframes goldPulse {
+  0% { box-shadow: 0 2px 38px #ffe272, 0 0 12px #c7a334; }
+  100% { box-shadow: 0 2px 54px #ffe272, 0 0 22px #c7a334; }
+}
+
+.chest-icon {
+  font-size: 48px;
+  animation: goldPulse 2.3s infinite alternate;
+  filter: drop-shadow(0 0 10px #ffe272);
+}
+
+.chest-text {
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: #c7a334;
+  font-weight: 700;
+  text-shadow: 0 0 12px #fffbe6, 0 0 6px #c7a334;
+}
+
+.chest-content {
+  animation: chest-content-appear-gold 0.8s cubic-bezier(.33,1.23,.62,1) 1;
+}
+
+@keyframes chest-content-appear-gold {
+  0% { opacity: 0; transform: translateY(65px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1.05); }
+}
+
+.promo-code-win {
+  margin-bottom: 26px;
+}
+
+.win-badge {
+  display: inline-block;
+  font-size: 21px;
+  background: linear-gradient(90deg, #ffe272 70%, #fffbe6 100%);
+  color: #c7a334;
+  border-radius: 24px 7px 24px 7px;
+  padding: 10px 28px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 22px #ffe272, 0 0 10px #c7a334;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px #fffbe6;
+}
+
+.promo-label {
+  font-size: 22px;
+  color: #c7a334;
+  margin-bottom: 12px;
+  font-weight: 600;
+  text-shadow: 0 0 10px #ffe272, 0 0 4px #fffbe6;
+}
+
+.promo-code-text {
+  font-size: 28px;
+  color: #c7a334;
+  font-weight: 700;
+  margin-bottom: 22px;
+  letter-spacing: 2px;
+  background: #fffbe6;
+  border-radius: 22px 6px 22px 6px;
+  padding: 14px 23px;
+  box-shadow: 0 1px 18px #ffe272, 0 0 10px #c7a334;
+  display: inline-block;
+  text-shadow: 0 0 10px #fffbe6, 0 0 8px #c7a334;
+}
+
+.chest-actions {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 16px;
+}
+
+.copy-button {
+  background: linear-gradient(90deg, #ffe272 55%, #c7a334 100%);
+  color: #191406;
+  border: none;
+  border-radius: 16px 4px 16px 4px;
+  font-size: 22px;
+  padding: 15px 32px;
+  font-weight: 700;
+  box-shadow: 0 2px 28px #ffe272, 0 0 14px #c7a334;
+  cursor: pointer;
+  transition: background 0.3s, color 0.15s, transform 0.1s;
+  text-shadow: 0 0 8px #fffbe6;
+  outline: none;
+}
+.copy-button:hover {
+  background: linear-gradient(90deg, #fffbe6 70%, #ffe272 100%);
+  color: #c7a334;
+  box-shadow: 0 2px 54px #c7a334, 0 0 22px #fffbe6;
+}
+
+.chest-referral {
+  background: #fffbe6;
+  color: #c7a334;
+  border-radius: 16px 4px 16px 4px;
+  font-size: 22px;
+  padding: 15px 32px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 28px #ffe272, 0 0 14px #c7a334;
+  transition: background 0.3s, color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 0 0 8px #fffbe6, 0 0 4px #c7a334;
+  outline: none;
+}
+.chest-referral:hover {
+  background: linear-gradient(90deg, #ffe272 70%, #fffbe6 100%);
+  color: #191406;
+  box-shadow: 0 2px 42px #c7a334, 0 0 18px #ffe272;
+}
+

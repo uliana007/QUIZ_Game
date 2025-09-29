@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./css/Matreshka.css";
-import "./css/PromoCodeTicket.css";
 import SoundContext from './SoundContext';
 import { trackGoal } from './utils/analytics';
 import { logEvent } from "./utils/googleAnalytics"; // 🟩 импорт функции логирования GA

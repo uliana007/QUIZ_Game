@@ -1,0 +1,43 @@
+/* Вариант 5: Золотой фэнтези (золото, черный, luxury) */
+.promo-chest-overlay {
+  background: rgba(20, 16, 3, 0.82);
+}
+.promo-chest-container {
+  background: linear-gradient(135deg, #fffbe6 45%, #f6e27a 80%, #c7a334 100%);
+  border: 3px solid #c7a334;
+  box-shadow: 0 8px 40px 0 rgba(200, 163, 52, 0.32);
+}
+.chest-btn {
+  background: linear-gradient(135deg, #f6e27a, #c7a334);
+  color: #3e2c00;
+  font-weight: bold;
+  box-shadow: 0 2px 24px #c7a334;
+  border: 2px solid #fffbe6;
+}
+.win-badge {
+  background: #c7a334;
+  color: #fffbe6;
+  font-weight: bold;
+}
+.promo-label { color: #c7a334; font-weight: bold; }
+.promo-code-text {
+  color: #c7a334;
+  background: #fffbe6;
+  font-weight: bold;
+  box-shadow: 0 1px 6px #c7a334;
+}
+.copy-button {
+  background: #c7a334;
+  color: #fffbe6;
+  font-weight: bold;
+  box-shadow: 0 2px 14px #fffbe6;
+  border: 2px solid #fffbe6;
+}
+.copy-button:hover { background: #fffbe6; color: #c7a334; }
+.chest-referral {
+  background: #fffbe6;
+  color: #c7a334;
+  font-weight: bold;
+  box-shadow: 0 2px 14px #c7a334;
+}
+.chest-referral:hover { background: #c7a334; color: #fffbe6; }

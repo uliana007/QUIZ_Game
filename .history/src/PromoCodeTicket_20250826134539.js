@@ -40,6 +40,8 @@ export const promoList = [
   { label: "Подписка 45 дней за 1 рубль в START по персональному промокоду", code: "gr45sportl", referralLink: "https://start.ru/" },
 
 ];
+
+
 const PromoNotification = ({ message }) => (
   <AnimatePresence>
     {message && (

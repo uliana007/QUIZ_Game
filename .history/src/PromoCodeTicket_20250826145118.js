@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./css/Matreshka.css";
-import "./css/PromoCodeTicket.css";
 import SoundContext from './SoundContext';
 import { trackGoal } from './utils/analytics';
 import { logEvent } from "./utils/googleAnalytics"; // 🟩 импорт функции логирования GA
@@ -40,6 +39,7 @@ export const promoList = [
   { label: "Подписка 45 дней за 1 рубль в START по персональному промокоду", code: "gr45sportl", referralLink: "https://start.ru/" },
 
 ];
+
 const PromoNotification = ({ message }) => (
   <AnimatePresence>
     {message && (
@@ -150,4 +150,5 @@ function PromoCodeChest({ promoCode }) {
   );
 }
 
-export default PromoCodeChest;
+
+export default PromoCodeTicket;

@@ -1,0 +1,26 @@
+/* Вариант 1: Киберпанк — неоновые фиолетовые и синие */
+.promo-chest-container {
+  background: linear-gradient(120deg, #3740ff 0%, #8e2de2 100%);
+  border: 3px solid #00f2ff;
+  box-shadow: 0 0 80px 0 #8e2de2, 0 0 24px 0 #00f2ff;
+  color: #fff;
+}
+.chest-btn {
+  background: linear-gradient(90deg, #00f2ff 0%, #8e2de2 100%);
+  box-shadow: 0 0 16px #00f2ff;
+}
+.copy-button {
+  background: #3740ff;
+}
+.chest-referral {
+  background: #8e2de2;
+  color: #fff;
+}
+.win-badge {
+  background: #00f2ff;
+  color: #3740ff;
+}
+.promo-code-text {
+  background: #23243b;
+  color: #00f2ff;
+}

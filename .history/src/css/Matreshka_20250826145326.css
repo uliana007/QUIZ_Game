@@ -112,7 +112,62 @@ body {
   z-index: 20; /* Карточка промокода поверх всего */
 }
 
+.promo-ticket-container {
+  background: linear-gradient(135deg, #ab0e0e, #cfd44e);
+  box-shadow: 
+  inset 0 20px 30px rgba(255, 255, 255, 0.975); /* Внутренняя тень для объёма */
+  border: 2.5px solid rgba(255, 255, 255, 0.496); /* Лёгкая обводка для объёма */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: white;
+  transform: scale(1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.promo-ticket-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.promo-ticket h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.promo-ticket p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.promo-code-text {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.copy-button {
+  background-color: rgb(96, 100, 102);
+  color: #ffffff;
+  border: 2px solid #ffffff; /* Белая окантовка */
+  padding: 10px 20px;
+  font-size: clamp(14px, 4vw, 16px);
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  align-self: center; /* Центрирование кнопки */
+  margin-top: auto; /* Сместим кнопку в самый низ экрана */
+  box-shadow: 0 4px 25px rgba(255, 255, 255, 0.867);
+}
+
+.copy-button:hover {
+  background-color: rgba(95, 95, 95, 0.471);
+}
+
+.copy-button:active {
+  transform: scale(0.95);
+}
 
 .promo-notification {
   position: fixed;
