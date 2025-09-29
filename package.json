@@ -7,28 +7,28 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
+    // Убраны predeploy и deploy, так как не нужны для Timeweb/Vercel
+    // "predeploy": "npm run build",
+    // "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@firebase/analytics": "^0.10.12",
     "@tonsolutions/telemetree-react": "^1.2.15",
     "@twa-dev/sdk": "^8.0.1",
     "@use-gesture/react": "^10.3.1",
-    "firebase": "^9.23.0",
-    "firebase-admin": "^13.2.0",
+    "firebase": "^10.12.0",
     "framer-motion": "^12.4.7",
     "gsap": "^3.12.7",
     "howler": "^2.2.4",
     "lucide-react": "^0.476.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
     "react-ga4": "^2.1.0",
-    "react-scripts": "^5.0.0",
+    "react-scripts": "^5.0.1",
     "react-svg": "^16.3.0",
-    "styled-components": "^6.1.15",
-    "three": "^0.173.0"
+    "styled-components": "^6.1.15"
+    // Убраны three и firebase-admin, добавьте обратно, если используете
   },
   "keywords": [
     "telegram",
@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
-  },
-  "homepage": "https://uliana007.github.io/QUIZ_Game/"
+  }
+  // Убрана строка "homepage": "https://uliana007.github.io/QUIZ_Game/"
+  // Для Timeweb/Vercel можно оставить без homepage или добавить "/" при необходимости
 }
